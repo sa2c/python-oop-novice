@@ -101,7 +101,8 @@ Disclaimer: it's not black and white! Could probably even do a dark and light si
 *** getattr
 *** What state goes inside vs outside an object?
 *** Could show an alternative to OOP with functions
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+*** Multiple abstractions/representations for data
+---------------------------------------------------------------------------------------------
 * Scratch
 class Test():
   def __init__(self):
