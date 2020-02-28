@@ -1,5 +1,3 @@
-Note: lots of technical terms here, obviously we won't use these.
-
 * Intermediate Python
 ** Basic ideas
 *** Variables, identity, mutability, objects
