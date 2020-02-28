@@ -1,4 +1,4 @@
-* Intermediate Python
+* Introduction to Object Oriented Python
 ** Basic ideas
 *** Variables, identity, mutability, objects
 *** type and isinstance
