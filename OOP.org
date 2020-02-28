@@ -1,0 +1,129 @@
+Note: lots of technical terms here, obviously we won't use these.
+
+* Intermediate Python
+** Basic ideas
+*** Variables, identity, mutability, objects
+*** type and isinstance
+*** Using some classes (e.g. numpy array?)
+*** Using packages: state and addressing
+*** Illustrate persistant state in objects (through example)
+*** Can we motivate OOP starting from func(x) -> x.func()
+*** Using .id and identity vs equality
+*** We call them functions outside OOP and methods in OOP
+** Class basics
+*** maybe build our own version of the class from previous section?
+*** self, what is self?
+*** properties
+*** use the class, calling methods and properties
+*** Setting up consistent class state and init (construction)
+** Static methods/properties
+*** Class/static Methods and variables
+**** @classmethod/@staticmethod
+**** class variables
+**** use a class factory method as an example (e.g. "read")
+**** Illustrate factory methods and factory functions
+**** Factory classes are a C++-ism, don't do it
+**** Other class method examples? To do with instance coupling rather than instance creation? Maybe this is an anti-pattern
+** Adaptable classes
+*** property/setters - and how that affords flexibility
+    .... no need for implementing setters/getters (eek! contradiction from what Ian was saying)
+*** Public/private
+**** using _func, _prop, __func, __prop
+*** Encapsulation (revisited?)
+**** what's OK to change? What isn't
+**** could touch on coupling/dependencies here?
+** Choices around classes
+*** Coupling, object composition/dependency injection,
+**** Specialisation of behaviour through composition
+**** examples of heavily coupled - pitfalls. Maybe as a challenge?
+a = Sampler(likelihood)
+...
+k = likelihood.how_much()
+** Special behaviour (and duck typing?)
+*** Iterables/iterators
+*** __str__ etc
+** Debugging
+*** pdb
+*** unit tests
+*** building dependencies in tests
+** Inheritance (without polymorphism first)
+ Not sure how far we go down this rabbit hole (if at all)... maybe just some examples and warn of the dangers
+*** Behaviour implemented in different classes, class hierarchy
+*** Lookup order (quickly)
+*** Shadowing variables
+**** Show a mistake, which introduces hard-to-find lookup order bug
+**** Show a use case for overriding behaviour
+*** super (in the context of __init__ and elsewhere)
+**** Show an example of failing super in init meaning that the parent isn't initialised
+**** Why is super common in init?
+**** Show an example of logic before and after super
+** Polymorphism
+*** Sub-classing to change behaviour (and the dangers of that)
+*** Basic examples:
+**** Default behaviour in parent classes
+**** Behaviour only in child classes (and overriding behaviour)
+**** Messy example with behaviour spread across multiple classes (maybe contrast with a procedural example)
+*** Lookup order (again)
+*** Inheritance/polymorphism vs Duck Typing and python (i.e. dynamic languages)
+** Pros/Cons
+Disclaimer: it's not black and white! Could probably even do a dark and light side for each point.
+*** Advantages
+**** encapsulation
+**** Objects are black boxes, with we can reuse
+**** data abstraction/indirection (an adaptor is a good analogy!)
+**** more declarative (by example)
+**** Information and behaviour are combined
+**** Data has agency and purpose
+**** Well defined interfaces and separation of concerns
+*** The dark side
+**** encapsulation causes hard to diagnose bugs
+**** Information and behaviour are combined
+**** Data has agency and purpose
+**** Decomposing a domain is chosen early - this is mega hard
+**** Design is selected early - this is mega hard
+**** Objects are black boxes, with unpredictable behaviour
+**** Interfaces are hard to change
+**** Encapsulation can cause confusing bugs...
+   sampler.sample(rate)
+   ---- vs --------
+   sampler = Sampler(rate)
+   a = sampler.sample_rate()
+   sampler.sample()
+   some_other_function()
+   b = sampler.sample_rate()
+**** Debugging can be harder
+** Ideas on closing statements
+*** The halfway house of python (a sprinkling of OOP)
+** Other/Maybe/Probably not
+*** pass for empty classes/function/methods (Exceptions?)
+*** multiple inheritance/mixins
+*** Design. A massive topic... not sure if there is anything we can do here... probably not
+*** getattr
+*** What state goes inside vs outside an object?
+*** Could show an alternative to OOP with functions
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+* Scratch
+class Test():
+  def __init__(self):
+     self.prop = 5
+     self._count = 0
+     
+  def hi(self):
+    print("hi")
+    
+  @property
+  def count(self):
+     return self._count
+    
+  @count.setter
+  def set_count(self, num):
+     self._count = num
+     
+def hi(self):
+   print("hi")
+   
+
+a = Test()
+a.count = 1
+
+a.count(1)
