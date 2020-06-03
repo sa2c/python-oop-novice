@@ -185,9 +185,13 @@ could be passed as arguments to `__init__` and set on initialisation, rather
 than being defined as part of the class definition:
 
 ~~~
+from matplotlib.colors import is_color_like
+
 class QuadraticPlotter:
     def __init__(self, color='red', linewidth=1):
         '''Set the initial attributes of this plotter.'''
+        assert is_color_like(color)
+
         self.color = color
         self.linewidth = linewidth
 
@@ -208,6 +212,9 @@ pink_plotter.plot(0, 1, 0)
 ~~~
 {: .language-python}
 
+This also lets us do some validation that the values we are given are
+usable, rather than deferring these errors to a long way down the line.
+
 > ## Zoom in again
 >
 > Try rewriting the "Zoom in" example above to set the bounds of the plot
@@ -219,6 +226,7 @@ pink_plotter.plot(0, 1, 0)
 >> class QuadraticPlotter:
 >>     def __init__(self, color='red', linewidth=1, x_min=-10, x_max=10):
 >>         '''Set the initial attributes of this plotter.'''
+>>         assert is_color_like(color)
 >>         self.color = color
 >>         self.linewidth = linewidth
 >>         self.x_min = x_min
