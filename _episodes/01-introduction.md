@@ -230,7 +230,7 @@ if we check what type a `ValueError` is, we see that it is of
 an_error = ValueError("A value must be provided")
 print(type(an_error))
 if isinstance(an_error, ValueError):
-	print("an_error is a ValueError")
+    print("an_error is a ValueError")
 ~~~
 {: .language-python}
 
@@ -244,7 +244,7 @@ However, we can also check if it is an `Exception`:
 
 ~~~
 if isinstance(an_error, Exception):
-	print("an_error is an Exception")
+    print("an_error is an Exception")
 ~~~
 {: .language-python}
 
@@ -264,11 +264,11 @@ numerator = 5
 denominator = 0
 
 try:
-	print(numerator, "divided by", denominator, "is", numerator / denominator)
+    print(numerator, "divided by", denominator, "is", numerator / denominator)
 except ZeroDivisionError:
-	print("You can't divide by zero!")
+    print("You can't divide by zero!")
 except Exception:
-	print("Something else went wrong.")
+    print("Something else went wrong.")
 ~~~
 {: .language-python}
 
