@@ -276,6 +276,33 @@ increasingly complex and build up functionality in layers.
 > {: .solution}
 {: .challenge}
 
+> ## Rectangles
+>
+> Write another subclass of `Polygon` to represent rectangles, and add
+> a method to calculate their area.
+>
+>> ## Solution
+>>
+>> ~~~
+>> class Rectangle(Polygon):
+>>     def __init__(self, side_lengths):
+>>         super().__init__(side_lengths)
+>>         num_sides = len(self.side_lengths)
+>>         assert num_sides == 2 or num_sides == 4
+>>         if num_sides == 2:
+>>             width, height = side_lengths
+>>             self.side_lengths = [width, height, width, height]
+>>         else:
+>>             assert self.side_lengths[0] == self.side_lengths[2]
+>>             assert self.side_lengths[1] == self.side_lengths[3]
+>>
+>>     def area(self):
+>>         return self.side_lengths[0] * self.side_lengths[1]
+>> ~~~
+>> {: .language-python}
+> {: .solution}
+{: .challenge}
+
 > ## Polynomial plotters
 >
 > In the previous episode, we wrote a `QuadraticPlotter` class for
