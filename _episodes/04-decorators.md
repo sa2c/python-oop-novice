@@ -157,7 +157,8 @@ a problem when we try and decorate a function that takes arguments:
 > element of the dict `kwargs` as a keyword argument.
 >
 > You can also write and use decorators that themselves accept
-> arguments, but we won't go into detail about these today.
+> arguments by using a closure, but we won't go into detail about
+> these today.
 {: .callout}
 
 > ## Double checking

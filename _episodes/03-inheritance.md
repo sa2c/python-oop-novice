@@ -311,10 +311,99 @@ increasingly complex and build up functionality in layers.
 >
 > Write a `PolynomialPlotter` class similar to `QuadraticPlotter`, and
 > rewrite `QuadraticPlotter` to be a subclass of it.
+>
+>> ## Solution
+>>
+>> ~~~
+>> class PolynomialPlotter:
+>>     def __init__(self, color='red', linewidth=1, x_min=-10, x_max=10):
+>>         assert is_color_like(color)
+>>         self.color = color
+>>         self.linewidth = linewidth
+>>         self.x_min = x_min
+>>         self.x_max = x_max
+>>
+>>     def polynomial(self, x, coefficients):
+>>         '''For a given x and list of n+1 coefficients [a, b, c, d, ...],
+>>         returns the polynomial f(x) = ax^n + bx^(n-1) + cx^(n-2) + ...'''
+>>         result = 0
+>>         for coefficient in coefficients:
+>>             result = result * x + coefficient
+>>         return result
+>>
+>>     def plot(self, coefficients):
+>>         '''Given the list of coefficients [a, b, c, d, ...],
+>>         plot the polynomial f(x) = ax^n + bx^(n-1) + cx^(n-2) + ... .
+>>         The line is plotted in the colour specified by color, and with width
+>>         linewidth.'''
+>>         fig, ax = matplotlib.pyplot.subplots()
+>>         x = numpy.linspace(self.x_min, self.x_max, 1000)
+>>         ax.plot(x, self.polynomial(x, coefficients),
+>>                 color=self.color, linewidth=self.linewidth)
+>>         fig.show()
+>>
+>> class QuadraticPlotter(PolynomialPlotter):
+>>     def plot(self, a, b, c):
+>>         super().plot([a, b, c])
+>> ~~~
+>> {: .language-python}
+> {: .solution}
 {: .challenge}
 
 > ## More general function plotters
 >
 > Taking this a step further, write a more general `FunctionPlotter`
-> class, and write `PolynomialPlotter` to be a subclass of it.
+> class, and adjust `PolynomialPlotter` to be a subclass of it.
+>
+>> ## Solution
+>>
+>> ~~~
+>> class FunctionPlotter:
+>>     def __init__(self, color='red', linewidth=1, x_min=-10, x_max=10):
+>>         assert is_color_like(color)
+>>         self.color = color
+>>         self.linewidth = linewidth
+>>         self.x_min = x_min
+>>         self.x_max = x_max
+>>
+>>     def plot(self, function):
+>>         '''Plot a function of a single argument.
+>>         The line is plotted in the colour specified by color, and with width
+>>         linewidth.'''
+>>         fig, ax = matplotlib.pyplot.subplots()
+>>         x = numpy.linspace(self.x_min, self.x_max, 1000)
+>>         ax.plot(x, function(x), color=self.color, linewidth=self.linewidth)
+>>         fig.show()
+>>
+>>
+>> class PolynomialPlotter(FunctionPlotter):
+>>     def plot(self, coefficients):
+>>         '''Given the list of coefficients [a, b, c, d, ...],
+>>         plot the polynomial f(x) = ax^n + bx^(n-1) + cx^(n-2) + ... .
+>>         The line is plotted in the colour specified by color, and with width
+>>         linewidth.'''
+>>         def polynomial(x):
+>>             '''For a given x and list of n+1 coefficients [a, b, c, d, ...],
+>>             returns the polynomial f(x) = ax^n + bx^(n-1) + cx^(n-2) + ...'''
+>>             result = 0
+>>             for coefficient in coefficients:
+>>                 result = result * x + coefficient
+>>             return result
+>>         super().plot(polynomial)
+>>
+>>
+>> class QuadraticPlotter(PolynomialPlotter):
+>>     def plot(self, a, b, c):
+>>        '''Plot the line a * x ** 2 + b * x + c and output to the screen.
+>>        x runs between x_min and x_max, with 1000 intermediary points.
+>>        The line is plotted in the colour specified by color, and with width
+>>        linewidth.'''
+>>         super().plot([a, b, c])
+>> ~~~
+>> {: .language-python}
+>>
+>> Defining a function within another function as we do in
+>> `PolynomialPlotter` is called a _closure_; this is a way of
+>> parametrising functions without having to pass arguments every time.
+> {: .solution}
 {: .challenge}
