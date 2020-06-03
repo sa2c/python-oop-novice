@@ -509,7 +509,39 @@ Modified perimeter: 21
 
 > ## More robust plotters
 >
-> Adjust the `PolynomialPlotter` (or `QuadraticPlotter`) example from
-> earlier to make `color` a property, with a getter and a setter, with
-> the setter checking that the the color is a valid matplotlib color.
+> Adjust the `FunctionPlotter`, `PolynomialPlotter`, or
+> `QuadraticPlotter` example from earlier to make `color` a property,
+> with a getter and a setter, with the setter checking that the the
+> color is a valid matplotlib color.
+>
+>> ## Solution
+>>
+>> ~~~
+>> class FunctionPlotter:
+>>     def __init__(self, color='red', linewidth=1, x_min=-10, x_max=10):
+>>         self.color = color
+>>         self.linewidth = linewidth
+>>         self.x_min = x_min
+>>         self.x_max = x_max
+>>
+>>     @property
+>>     def color(self):
+>>         return self._color
+>>
+>>     @color.setter
+>>     def color(self, color):
+>>         assert is_color_like(color)
+>>         self._color = color
+>>
+>>     def plot(self, function):
+>>         '''Plot a function of a single argument.
+>>         The line is plotted in the colour specified by color, and with width
+>>         linewidth.'''
+>>         fig, ax = matplotlib.pyplot.subplots()
+>>         x = numpy.linspace(self.x_min, self.x_max, 1000)
+>>         ax.plot(x, function(x), color=self._color, linewidth=self.linewidth)
+>>         fig.show()
+>> ~~~
+>> {: .language-python}
+> {: .solution}
 {: .challenge}
