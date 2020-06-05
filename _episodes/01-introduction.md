@@ -1,7 +1,7 @@
 ---
 title: "Classes and Objects"
 teaching: 20
-exercises: 10
+exercises: 15
 questions:
 - "Why is object oriented programming useful?"
 - "Where are classes and objects encountered in Python?"

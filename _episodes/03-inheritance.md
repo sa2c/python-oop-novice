@@ -1,7 +1,7 @@
 ---
 title: "Inheritance"
 teaching: 20
-exercises: 10
+exercises: 20
 questions:
 - "How can classe relationships where one represents a specific subset
 of another be represented?"

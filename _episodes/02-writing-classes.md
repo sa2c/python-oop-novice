@@ -1,7 +1,7 @@
 ---
 title: "Writing classes"
 teaching: 20
-exercises: 10
+exercises: 25
 questions:
 - "How are classes written in Python?"
 - "What do methods look like?"
