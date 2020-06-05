@@ -198,6 +198,16 @@ article pre {
 // Miscellaneous.
 //----------------------------------------
 
+figure {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  font-style: italic;
+  font-size: smaller;
+  text-indent: 0;
+}
+
 .figures h2 { margin-top: 100px; }
 
 .maintitle {
