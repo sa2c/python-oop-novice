@@ -489,3 +489,13 @@ for side_length in a_polygon:
 > `__reversed__()` from `Polygon` and testing the loops forwards and
 > backwards again.
 {: .challenge}
+
+## More dunder methods
+
+Python offers many more dunder methods than could possibly be covered
+in this episode. A full listing, categorised by the functions that
+they serve, can be found in [the Python
+documentation][special-method-names]
+
+
+[special-method-names]: https://docs.python.org/3/reference/datamodel.html#special-method-names
