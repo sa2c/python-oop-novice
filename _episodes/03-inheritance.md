@@ -3,7 +3,8 @@ title: "Inheritance"
 teaching: 20
 exercises: 10
 questions:
-- "How can classes with shared functionality be linked to avoid repetition?"
+- "How can classe relationships where one represents a specific subset
+of another be represented?"
 - "How can functionality on one class be overridden or extended by its
 children?"
 objectives:
@@ -12,8 +13,9 @@ classes"
 - "Be able to override methods on child classes, and refer back to the parent
 class's implementations"
 keypoints:
-- "Adding a class in parentheses after a class definition inherits all of that
-class's attributes and methods."
+- "Adding a class in parentheses after a class definition indicates
+that the new class is a subclass of the bracketed class (parent class)."
+- "The subclass inherits all of that parent class's attributes and methods."
 - "Defining a method with the same name as one of the parent class's overrides
 it."
 - "Use `super()` to access parent classes and their methods."
@@ -39,12 +41,13 @@ can be used to handle both specific and more general exceptions in a
 hierarchy. We can also use this to define our own exceptions. Say, for
 example, we have a function to convert temperatures from degrees Celsius to
 degrees Fahrenheit,
-$\theta_{\mathrm{F}}(\theta{\mathrm_{C}})=\frac{9}{5}\theta_{\mathrm{C} +
-32$. We know that temperatures below absolute zero are not valid, so if we
+\\(\theta_{\mathrm{F}}(\theta_{\mathrm{C}})=\frac{9}{5}\theta_{\mathrm{C}} +
+32\\).
+We know that temperatures below absolute zero are not valid, so if we
 encounter those in our code we would like to raise the alarm as soon as
 possible; we could do this with an `assert`, but another way of expressing this
 could be by defining our own exception to flag this. A temperature below
-$-273.15\deg\mathrm{C}$ is an example of a bad _value_, so this would want to
+\\(-273.15^\circ\mathrm{C}\\) is an example of a bad _value_, so this would want to
 inherit from `ValueError`.
 
 ~~~
@@ -110,9 +113,9 @@ print(some_shape.perimeter())
 
 Now, we know more about triangles than we do about generic polygons,
 so we can create a specialised subclass of `Polygon` called
-`Triangle`. For example, for a triangle of sides $a$, $b$, and $c$,
+`Triangle`. For example, for a triangle of sides \\(a\\), \\(b\\), and \\(c\\),
 Heron's formula states that the perimeter of the triangle is given by
-$\sqrt{p(p-a)(p-b)(p-c)}$, where $p=\frac{a+b+c){2}$.
+\\(\sqrt{p(p-a)(p-b)(p-c)}\\), where \\(p=\frac{1}{2}(a+b+c)\\).
 
 ~~~
 class Triangle(Polygon):
