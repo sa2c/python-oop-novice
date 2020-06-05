@@ -204,6 +204,16 @@ increasingly complex and build up functionality in layers.
 > {: .language-python}
 {: .callout}
 
+> ## Inheriting from `object`
+>
+> Sometimes in older Python you will see classes inherit from
+> `object`. This is a holdover from Python 2, where this was needed to
+> create a "new-style" class instead of an "old-style"
+> class. Old-style classes were removed in Python 3, with all classes
+> being new-style ones which inherit from `object` automatically, so
+> you don't need to (and shouldn't) do this any more.
+{: .callout}
+
 > ## `super()` placement
 >
 > A four-sided shape where one of the side lengths is zero is a
