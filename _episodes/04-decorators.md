@@ -118,22 +118,22 @@ a problem when we try and decorate a function that takes arguments:
 > @track_this
 > def say_something(thing_to_say):
 >     print(thing_to_say)
-> 
+>
 > say_something("Hello there")
 > ~~~
 > {: .language-python}
-> 
+>
 > ~~~
 > TypeError                                 Traceback (most recent call last)
 > <ipython-input-29-000c7283eed1> in <module>()
 >       3     print(thing_to_say)
 >       4
 > ----> 5 say_something("Hello there")
-> 
+>
 > TypeError: new_function() takes 0 positional arguments but 1 was given
 > ~~~
 > {: .output}
-> 
+>
 > To make this more flexible, we can rewrite the `track_this`
 > decorator as:
 >
@@ -143,7 +143,7 @@ a problem when we try and decorate a function that takes arguments:
 >         print("Entering", function)
 >         function(*args, **kwargs)
 >         print("Leaving", function)
-> 
+>
 >     return new_function
 > ~~~
 > {: .language-python}

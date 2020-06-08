@@ -70,7 +70,7 @@ parent. Let's test this.
 
 ~~~
 for temperature_c in 0, 100, -300:
-    print(temperature_c, "degrees Celsius is", 
+    print(temperature_c, "degrees Celsius is",
           celsius_to_fahrenheit(temperature_c), "degrees Fahrenheit")
 ~~~
 {: .language-python}
@@ -100,7 +100,7 @@ class Polygon:
     def perimeter(self):
         '''Returns the perimeter of the polygon.'''
         return sum(self.side_lengths)
-		
+
 some_shape = Polygon([1, 2, 3, 4, 5])
 print(some_shape.perimeter())
 ~~~
@@ -122,7 +122,7 @@ class Triangle(Polygon):
     def __init__(self, side_lengths):
         # Triangles have three sides
         assert len(side_lengths) == 3
-		self.side_lengths = side_lengths
+        self.side_lengths = side_lengths
 
     def area(self):
         '''Returns the area of the triangle.'''
@@ -272,14 +272,14 @@ increasingly complex and build up functionality in layers.
 >>      27 print("Perimeter:", a_triangle.perimeter())
 >>      28 print("Area:", a_triangle.area())
 >> ---> 29 b_triangle = Triangle([3, 4, 0])
->> 
+>>
 >> <ipython-input-17-751f0372a229> in __init__(self, side_lengths)
 >>      16         # Triangles have three sides
 >>      17         super().__init__(side_lengths)
 >> ---> 18         assert len(self.side_lengths) == 3
 >>      19
 >>      20     def area(self):
->> 
+>>
 >> AssertionError:
 >> ~~~
 >> {: .output}

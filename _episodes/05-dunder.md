@@ -261,7 +261,7 @@ class Triangle(Polygon):
 >>
 >>     def __repr__(self):
 >>         return f'{self.centre} ± {self.error}'
->> 
+>>
 >>     def __add__(self, other):
 >>         centre = self.centre + other.centre
 >>         error = (self.error ** 2 + other.error ** 2) ** 0.5

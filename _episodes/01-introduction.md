@@ -93,7 +93,7 @@ True
 ~~~
 {: .output}
 
-> ## Finding out what things are 
+> ## Finding out what things are
 >
 > Use `type()` to find the type of `students`, defined as
 >
@@ -223,7 +223,7 @@ one will give a result that is equal, but not identical, to the existing one.
 Object-oriented programming allows relationships to be defined between classes.
 One class may be considered to be a specialisation or _subclass_ of another.
 This is very frequently seen in the way Python handles exceptions. For example,
-if we check what type a `ValueError` is, we see that it is of 
+if we check what type a `ValueError` is, we see that it is of
 `class 'ValueError'`:
 
 ~~~

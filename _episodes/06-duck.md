@@ -23,7 +23,7 @@ keypoints:
 &ndash;-
 
 There is a principle that if something "looks like a duck, and swims
-like a duck, and quacks like a duck, then it is probably a duck". 
+like a duck, and quacks like a duck, then it is probably a duck".
 
 {% include image.html url="/assets/img/duck.jpg"
 alt="Photograph of a duck and three ducklings on a body of
@@ -43,7 +43,7 @@ We could implement this in Python as:
 ~~~
 def newton(function, derivative, initial_estimate, num_iters=10):
     '''Solves the equation `function`(x) == 0 using the Newton&ndash;Raphson
-    method with `num_iters` iterations, starting from `initial_estimate`. 
+    method with `num_iters` iterations, starting from `initial_estimate`.
     `derivative` is the derivative of `function` with respect to x.'''
 
     current_estimate = initial_estimate
@@ -150,7 +150,7 @@ must have two methods:
 * `__next__()`, which returns the next item in the sequence. If there
   are no more items, then this should raise the `StopIteration`
   exception, and successive calls should keep raising this exception.
-  
+
 For instance, an iterator that returns the Fibonacci numbers up to
 some upper bound may look something like:
 
