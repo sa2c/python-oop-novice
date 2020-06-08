@@ -59,29 +59,196 @@ type(numbers)
 ~~~
 {: .output}
 
-We can see here that `numbers` is an object of the _class_ `numpy.ndarray`.
+We can see here that `numbers` is an object of the type `numpy.ndarray`.
 
-The distinction between a class and an object is subtle but important. A class
-is a description or specification of what an object will look like, how to
-create it, and what can be done with it. An object is a specific _instance_ of
-what the class describes. To use a real-world example, a design specifying
-how a chair can be constructed is equivalent to a class, while the chairs
-made to that blueprint are objects. The chairs may be different colours, or
-different widths, or have different feet to match the flooring they are used
-on, as allowed by the design of the chair. Similarly, more often that not
-objects that are instances of the same class will be different, but all will
-share the common elements that the class defines.
+~~~
+type(numbers)
+~~~
+{: .language-python}
 
-Classes can (and, in general, should) provide functions that operate on
-instances of the class. When a function is part of a class, we call it a
-_method_ of the class. The distinction is that a method is aware of the object
-to which it relates, whereas a function is not. For example, when we used
-the `numbers.mean()` method above, we did not need to pass `numbers` as an
-argument, since `mean()` already knew that it was attached to the `numbers`
-object.
+~~~
+<class 'int'>
+~~~
+{: .output}
 
-We can check whether an object is of a particular class with the `isinstance`
-function:
+In Python, anything which can be stored in a variable or passed to a function is called an _object_. There are many types of objects. Objects are classified by their `type`, or their `class`.
+
+~~~
+Note that in Object Oriented literature, you'll find a subtle distinction between `class` and `type`. But for the purposes of this course we use the terms interchangably.
+~~~
+{: .callout}
+
+# Ch-Ch-Changes
+
+In python, there are two ways in which objects can behave.
+
+Some objects, like integers, string or tuples, are created with one value, and they then keep the same value forever.
+
+Let's create a variable:
+~~~
+a = "hello"
+~~~
+{: .language-python}
+
+And add one to that variable, and store the result in b:
+~~~
+b = a + " world"
+~~~
+{: .language-python}
+
+The value of `a` remains unchanged.
+~~~
+print(a)
+~~~
+{: .language-python}
+
+~~~
+"hello"
+~~~
+{: .output}
+
+You're probably not surprised by this, but there is something more fundamental going on here.
+
+There is absolutely nothing we can do which will change the value of the underlying _object_ that is stored in `a`. This kind of object is called _immutable_, it can't be _mutated_. It is created with a value, and it keeps that value forever.
+
+~~~
+There is one way that we can change the value of the variable `a`, and that is by setting it a new value, for example `a = 2`.
+
+Note however that this is creating a new object, with a new value (2 in this case) and pointing `a` at that object.
+~~~
+{: .callout}
+
+The other kind of object we come across in python is are _mutable_ objects. These can be changed, or mutated, after they've been created.
+
+Compare the previous example with
+~~~
+a = ["We", "probably", "can't", "change", "this"]
+~~~
+{: .language-python}
+
+Let's assign `a` to a new variable, this essentially points `b` at the object created by `a`:
+~~~
+b = a
+~~~
+{: .language-python}
+
+Let's now change `b`:
+~~~
+b[2] = "can"
+~~~
+{: .language-python}
+
+What is the value of `a` now?
+~~~
+print(a)
+~~~
+{: .language-python}
+~~~
+['We', 'probably', 'can', 'change', 'this']
+~~~
+
+Note how we changed `a` by only touching `b`, because they refer to the same underlying object.
+
+> ## Let's find some types
+>
+> Can you find anything that you can store in a variable which does not have a `type`? What is the type of the number `1`, or the string `"hello"? Does the type change if they are passed directly to `type`, or if they are stored in a variable?
+> {: .language-python}
+>
+>> ## Solution
+>>
+>> ~~~
+>> type(1)
+>> ~~~
+>> {: .language-python}
+>>
+>> ~~~
+>> <type 'int'>
+>> ~~~
+>> {: .output}
+>>
+>> ~~~
+>> type([1,2,3])
+>> ~~~
+>> {: .language-python}
+>>
+>> ~~~
+>> <type 'list'>
+>> ~~~
+>> {: .output}
+> {: .solution}
+{: .challenge}
+
+> ## Does everything have a type?
+>
+> Try to find words that python recognises that are not types. What about `numpy.mean` or `numpy`?
+>
+> What about `if` or `for`?
+> {: .language-python}
+>
+>> ## Solution
+>>
+>> ~~~
+>> type(numpy.mean)
+>> ~~~
+>> {: .language-python}
+>>
+>> ~~~
+>> <type 'function'>
+>> ~~~
+>> {: .output}
+>>
+>> ~~~
+>> type(numpy)
+>> ~~~
+>> {: .language-python}
+>>
+>> ~~~
+>> <type 'module'>
+>> ~~~
+>> {: .output}
+>> ~~~
+>> type(if)
+>> ~~~
+>> {: .language-python}
+>>
+>> ~~~
+>>  File "<stdin>", line 1
+>>    type(if)
+>>          ^
+>>SyntaxError: invalid syntax
+>> ~~~
+>> {: .output}
+>> ~~~
+>> type(for)
+>> ~~~
+>> {: .language-python}
+>>
+>> ~~~
+>>  File "<stdin>", line 1
+>>    type(for)
+>>          ^
+>>SyntaxError: invalid syntax
+>> ~~~
+>> {: .output}
+>> The words `if` and `for` are part of the language, they can't be stored in variables. And only things which can be stored in variables have a type.
+> {: .solution}
+{: .challenge}
+
+# Classes
+
+You may have noted that the type of some objects had the word _class_ in front of it, for example:
+~~~
+type(numbers)
+~~~
+{: .language-python}
+
+~~~
+True
+~~~
+{: .output}
+
+
+We can check whether an object belong to a particular type with the `isinstance` function. This may seem like a confusing name for the function, but the name will become :
 
 ~~~
 isinstance(students, numpy.ndarray)
