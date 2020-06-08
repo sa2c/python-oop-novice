@@ -203,7 +203,7 @@ You're probably not surprised by this, but there is something very fundamental g
 
 There is absolutely nothing we can do which will change the value of the underlying object that is referred to by the variable `a`. This kind of object is called _immutable_, it can't be changed (or _mutated_) once it has been created. It is created with a given value, and it keeps that same value forever.
 
-> # Assignment doesn't count
+> ## Assignment doesn't count
 >
 > At first glance, it might seem that we can change the value of the object which `a` points to with `a = 2`.
 >
@@ -280,7 +280,7 @@ print(hello.capitalize())
 
 When a function is associated to an object we call it a _method_ of the object, and we call it by using a dot, for example: `object_name.method_name()`
 
-> # Changing places
+> ## Changing places
 >
 > It's worth noting that methods of immutable objects can't change
 > the underlying object. They always return a brand new object with the new value. We can see this in action by looking at the variable `hello` after capitalisation above. The value of the object has not been changed. 
