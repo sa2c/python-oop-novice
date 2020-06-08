@@ -147,9 +147,11 @@ What is the value of `a` now?
 print(a)
 ~~~
 {: .language-python}
+
 ~~~
 ['We', 'probably', 'can', 'change', 'this']
 ~~~
+{: .output}
 
 Note how we changed `a` by only touching `b`, because they refer to the same underlying object.
 
