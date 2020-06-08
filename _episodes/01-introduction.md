@@ -121,7 +121,7 @@ Note however that this is creating a new object, with a new value (2 in this cas
 
 The other kind of object we come across in python is are _mutable_ objects. These can be changed, or mutated, after they've been created.
 
-Compare the previous example with
+Keep the previous example in mind as you do with the following:
 ~~~
 a = ["We", "probably", "can't", "change", "this"]
 ~~~
@@ -152,8 +152,12 @@ Note how we changed `a` by only touching `b`, because they refer to the same und
 
 > ## Let's find some types
 >
-> Can you find anything that you can store in a variable which does not have a `type`? What is the type of the number `1`, or the string `"hello"? Does the type change if they are passed directly to `type`, or if they are stored in a variable?
-> {: .language-python}
+> Can you find anything that you can store in a variable which
+> does not have a `type`? What is the type of the number `1`,
+> or the string `"hello"?
+>
+> Does the type change if they are passed directly to `type`,
+> or if they are stored in a variable?
 >
 >> ## Solution
 >>
@@ -184,7 +188,6 @@ Note how we changed `a` by only touching `b`, because they refer to the same und
 > Try to find words that python recognises that are not types. What about `numpy.mean` or `numpy`?
 >
 > What about `if` or `for`?
-> {: .language-python}
 >
 >> ## Solution
 >>
