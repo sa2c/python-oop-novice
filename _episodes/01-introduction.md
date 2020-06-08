@@ -74,6 +74,8 @@ type(numbers)
 
 In Python, anything which can be stored in a variable or passed to a function is called an _object_. There are many types of objects. Objects are classified by their `type`, or their `class`.
 
+> ## Class vs Type
+>
 > Note that in Object Oriented literature, you'll find a subtle
 > distinction between `class` and `type`. But, since the Python
 > implementation does not distinguish, we use these terms
@@ -113,6 +115,8 @@ You're probably not surprised by this, but there is something more fundamental g
 
 There is absolutely nothing we can do which will change the value of the underlying _object_ that is stored in `a`. This kind of object is called _immutable_, it can't be _mutated_. It is created with a value, and it keeps that value forever.
 
+> # Assignment doesn't count
+>
 > There is one way that we can change the value of the variable `a`, and that is by setting it a new value, for example `a = 2`.
 >
 > Note however that this is creating a new object, with a new value (2 in this case) and pointing `a` at that object.
