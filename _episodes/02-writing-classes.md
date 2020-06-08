@@ -169,6 +169,80 @@ Line width of blue plotter is 5
 {: .challenge}
 
 
+> ## Plots of fits
+>
+> The following function performs an Orthogonal Distance Regression
+> fit of some data, and plots the resulting fit line along with the
+> data.
+>
+> ~~~
+> from scipy.odr import ODR, Model, RealData
+> from matplotlib.pyplot import subplots, show
+> from numpy import linspace
+>
+> def linear(params, x):
+>     return params[0] * x + params[1]
+>
+>
+> def odr_fit(f, x, y, xerr=None, yerr=None, p0=None, num_params=None):
+>     if not p0 and not num_params:
+>         raise ValueError("p0 or num_params must be specified")
+>     if p0 and (num_params is not None):
+>         assert len(p0) == num_params
+>
+>     data_to_fit = RealData(x, y, xerr, yerr)
+>     model_to_fit_with = Model(f)
+>     if not p0:
+>         p0 = tuple(1 for _ in range(num_params))
+>
+>     odr_analysis = ODR(data_to_fit, model_to_fit_with, p0)
+>     odr_analysis.set_job(fit_type=0)
+>     return odr_analysis.run()
+>
+>
+> def plot_results(f, fitobj, x, y,
+>                  xmin=None, xmax=None, xerr=None, yerr=None, filename=None):
+>     fig, ax = subplots()
+>     if xmin is None:
+>         xmin = min(x)
+>     if xmax is None:
+>         xmax = max(x)
+>
+>     x_range = linspace(xmin, xmax, 1000)
+>     ax.plot(x_range, f(fitobj.beta, x_range), label='Fit')
+>     ax.errorbar(x, y, xerr=xerr, yerr=yerr, fmt='.', label='Data')
+>     ax.set_xlabel(r'$x$')
+>     ax.set_ylabel(r'$y$')
+>     fig.suptitle(f'Data: $A={fitobj.beta[0]:.02}'
+>                  f'\\pm{fitobj.cov_beta[0][0]**0.5:.02}, '
+>                  f'B={fitobj.beta[1]:.02}\\pm{fitobj.cov_beta[1][1]**0.5:.02}$')
+>     ax.legend(loc=0, frameon=False)
+>
+>     if filename is not None:
+>         fig.savefig(filename)
+>
+>
+> x_data = [0, 1, 2, 3, 4, 5]
+> y_data = [1, 3, 2, 4, 5, 5]
+> x_err = [0.2, 0.1, 0.3, 0.2, 0.5, 0.3]
+> y_err = [0.4, 0.4, 0.1, 0.2, 0.1, 0.4]
+>
+> result = odr_fit(linear, x_data, y_data, x_err, y_err, num_params=2)
+> plot_results(linear, result, x_data, y_data, xerr=x_err, yerr=y_err)
+> show()
+> ~~~
+> {: .language-python}
+>
+> This code has a lot of repeated terms, and would have even more if
+> we wanted to set custom formatting each time.
+>
+> Try rewriting this as a class, turning most function arguments into
+> variables attached to the object, and functions into methods. Some
+> of these you won't be able to set in the class definition, but will
+> need to be set before the functions will work.
+{: .challenge}
+
+
 ## Initialising instances
 
 So far we can create an object with the defaults that we set in the class
@@ -252,6 +326,13 @@ usable, rather than deferring these errors to a long way down the line.
 >> ~~~
 >> {: .language-python}
 > {: .solution}
+{: .challenge}
+
+> ## Initialising fitting
+>
+> Adjust your solution to the _Plots of fits_ challenge above so that
+> it has an initialiser which checks that the needed parameters are
+> given before initialising the object.
 {: .challenge}
 
 {% include links.md %}
