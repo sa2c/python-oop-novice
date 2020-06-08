@@ -45,8 +45,9 @@ print(numbers.mean())
 ~~~
 {: .output}
 
-We can do this because `numbers` is an _object_, and in this particular case it
-provides the `mean` method. Let's investigate this further by using `type`
+How does Python know it can do this?
+
+Let's investigate this further by using `type`
 to identify what the data type of `numbers` is:
 
 ~~~
