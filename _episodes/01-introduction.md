@@ -76,92 +76,19 @@ In Python, anything which can be stored in a variable or passed to a function is
 
 > ## Class vs Type
 >
-> Note that in Object Oriented literature, you'll find a subtle
+> Note that in literature, you'll find a subtle
 > distinction between `class` and `type`. But, since in Python
-> we can't have one without the other, we will use these terms
+> we can't have one without the other, we will use the term class
 > interchangably.
 {: .callout}
-
-# Ch-Ch-Changes
-
-In python, there are two ways in which objects can behave.
-
-Some objects, like integers, string or tuples, are created with one value, and they then keep the same value forever.
-
-Let's create a variable:
-~~~
-a = "hello"
-~~~
-{: .language-python}
-
-And add one to that variable, and store the result in b:
-~~~
-b = a + " world"
-~~~
-{: .language-python}
-
-The value of `a` remains unchanged.
-~~~
-print(a)
-~~~
-{: .language-python}
-
-~~~
-"hello"
-~~~
-{: .output}
-
-You're probably not surprised by this, but there is something more fundamental going on here.
-
-There is absolutely nothing we can do which will change the value of the underlying _object_ that is stored in `a`. This kind of object is called _immutable_, it can't be _mutated_. It is created with a value, and it keeps that value forever.
-
-> # Assignment doesn't count
->
-> There is one way that we can change the value of the variable `a`, and that is by setting it a new value, for example `a = 2`.
->
-> Note however that this is creating a new object, with a new value (2 in this case) and pointing `a` at that object.
-{: .callout}
-
-The other kind of object we come across in python is are _mutable_ objects. These can be changed, or mutated, after they've been created.
-
-Keep the previous example in mind as you do with the following:
-~~~
-a = ["We", "probably", "can't", "change", "this"]
-~~~
-{: .language-python}
-
-Let's assign `a` to a new variable, this essentially points `b` at the object created by `a`:
-~~~
-b = a
-~~~
-{: .language-python}
-
-Let's now change `b`:
-~~~
-b[2] = "can"
-~~~
-{: .language-python}
-
-What is the value of `a` now?
-~~~
-print(a)
-~~~
-{: .language-python}
-
-~~~
-['We', 'probably', 'can', 'change', 'this']
-~~~
-{: .output}
-
-Note how we changed `a` through the variable `b`. We can do this because both `a` and `b` refer to the same underlying object. 
 
 > ## Let's find some types
 >
 > Can you find anything that you can store in a variable which
-> does not have a `type`? What is the type of the number `1`,
+> does not have a class? What is the type of the number `1`,
 > or the string `"hello"?
 >
-> Does the type change if they are passed directly to `type`,
+> Does the class change if they are passed directly to `type`,
 > or if they are stored in a variable?
 >
 >> ## Solution
@@ -188,9 +115,9 @@ Note how we changed `a` through the variable `b`. We can do this because both `a
 > {: .solution}
 {: .challenge}
 
-> ## Does everything have a type?
+> ## Does everything have a class?
 >
-> Try to find words that python recognises that are not types. What about `numpy.mean` or `numpy`?
+> Try to find words that python recognises that do not have classes. What about `numpy.mean` or `numpy`?
 >
 > What about `if` or `for`?
 >
@@ -239,15 +166,91 @@ Note how we changed `a` through the variable `b`. We can do this because both `a
 >>SyntaxError: invalid syntax
 >> ~~~
 >> {: .output}
->> The words `if` and `for` are part of the language, they can't be stored in variables. And only things which can be stored in variables have a type.
+>> The words `if` and `for` are part of the Python language itself, they can't be stored in variables. Only things which can be stored in variables can have a class.
 > {: .solution}
 {: .challenge}
 
-# Classes
+# Ch-Ch-Changes
 
-You may have noted that the type of some objects had the word _class_ in front of it, for example:
+In python, there are two ways in which objects can behave.
+
+Some objects, like integers, string or tuples, are created with one value, and they then keep the same value forever.
+
+Let's create a variable:
 ~~~
-type(numbers)
+a = "hello"
+~~~
+{: .language-python}
+
+And add one to that variable, and store the result in b:
+~~~
+b = a + " world"
+~~~
+{: .language-python}
+
+The value of `a` remains unchanged.
+~~~
+print(a)
+~~~
+{: .language-python}
+
+~~~
+"hello"
+~~~
+{: .output}
+
+You're probably not surprised by this, but there is something very fundamental going on here.
+
+There is absolutely nothing we can do which will change the value of the underlying object that is referred to by the variable `a`. This kind of object is called _immutable_, it can't be changed (or _mutated_) once it has been created. It is created with a given value, and it keeps that same value forever.
+
+> # Assignment doesn't count
+>
+> At first glance, it might seem that we can change the value of the object which `a` points to with `a = 2`.
+>
+> In practice however, this is actually pointing `a` to a new object, and the original object remains unchanged.
+{: .callout}
+
+Not all objects in Python are immutable. Consider the following list of strings:
+~~~
+a = ["We", "probably", "can't", "change", "this"]
+~~~
+{: .language-python}
+
+Let's assign `a` to a new variable, this essentially points `b` at the object created by `a`:
+~~~
+b = a
+~~~
+{: .language-python}
+
+Let's now change `b`:
+~~~
+b[2] = "can"
+~~~
+{: .language-python}
+
+What is the value of `a` now?
+~~~
+print(a)
+~~~
+{: .language-python}
+
+~~~
+['We', 'probably', 'can', 'change', 'this']
+~~~
+{: .output}
+
+Note how we changed `a` through the variable `b`. We can do this because both `a` and `b` refer to the same underlying object.
+
+Importantly, the underlying object can be changed. And the value referenced by both variables also changes. We call these objects _mutable_. The can be "mutated" after they're created.
+
+All objects in Python are classified as mutable or immutable.
+
+# Methods
+
+We can check if an object is an _instance of_ a particular class with the `isinstance` function.
+
+~~~
+isinstance(numbers, numpy.ndarray)
 ~~~
 {: .language-python}
 
@@ -256,18 +259,36 @@ True
 ~~~
 {: .output}
 
+Every object is created with a single class, which cannot be changed.
 
-We can check whether an object belong to a particular type with the `isinstance` function. This may seem like a confusing name for the function, but the name will become :
+Objects can have functions associated with them. The functions associated with an object are determined by the class of the object.
 
+For example, as above
 ~~~
-isinstance(students, numpy.ndarray)
+numbers.mean()
 ~~~
 {: .language-python}
 
+The `numbers` object has a `mean` function provided by the `numpy.ndarray` class. This allows objects of a `numpy.ndarray` to provide functionality specific to that type of object.
+
+Mutable objects can have methods too:
 ~~~
-True
+hello = "hello, world"
+print(hello.capitalize())
 ~~~
-{: .output}
+{: .language-python}
+
+When a function is associated to an object we call it a _method_ of the object, and we call it by using a dot, for example: `object_name.method_name()`
+
+> # Changing places
+>
+> It's worth noting that methods of immutable objects can't change
+> the underlying object. They always return a brand new object with the new value. We can see this in action by looking at the variable `hello` after capitalisation above. The value of the object has not been changed. 
+>
+> Methods on mutable object, however, will typically change the object itself.
+{. :callout}
+
+We then say that particular objects are _instances_ of the class. To use a real world example, a chair is a particular type or class of object. The chair that you are sitting on right now is a specific _instance_ of the class of all chairs.
 
 > ## Finding out what things are
 >
@@ -367,11 +388,12 @@ print(type(students))
 
 Python has two ways of testing whether two objects are the "same". The first
 is _equality_, or whether the associated values or contents of the object are
-the same. The second is _identity_, or whether the objects are in fact the
-same instance, with names referring to the same space in Python's memory.
+the same.
 
-Equality is tested with `==`, which you have probably used before. We can test
-for identity with the `is` keyword:
+The second is _identity_, or whether the objects are in fact the
+same instance, with names referring to the same underlying object.
+
+Equality is tested with `==`, which you have probably used before. We can test for identity with the `is` keyword:
 
 ~~~
 old_students = students
@@ -396,8 +418,10 @@ one will give a result that is equal, but not identical, to the existing one.
 
 ## Inheritance
 
-Object-oriented programming allows relationships to be defined between classes.
+Object-oriented programming allows relationships to be defined between classes or types.
 One class may be considered to be a specialisation or _subclass_ of another.
+For a real world example, a car could be considered a specialisation or subclass of the class of all vehicles.
+
 This is very frequently seen in the way Python handles exceptions. For example,
 if we check what type a `ValueError` is, we see that it is of
 `class 'ValueError'`:
