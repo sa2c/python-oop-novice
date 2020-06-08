@@ -153,7 +153,7 @@ print(a)
 ~~~
 {: .output}
 
-Note how we changed `a` by only touching `b`, because they refer to the same underlying object.
+Note how we changed `a` through the variable `b`. We can do this because both `a` and `b` refer to the same underlying object. 
 
 > ## Let's find some types
 >
