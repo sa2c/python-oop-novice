@@ -310,4 +310,66 @@ inherit it.)
 > and adjust the `Polygon` class so that it follows this.
 {: .challenge}
 
-[hashable]: https://docs.python.org/3.4/library/collections.abc.html#collections.abc.Hashable
+
+## Composition
+
+Composition is a technique where rather than adding more and more
+functionality to a single class (either explicitly, or via
+inheritance), functionality is added by adding instances of other
+classes that group together the related functionality.
+
+An example of a library that makes heavy use of composition is the
+Matplotlib object-oriented API. While Matplotlib makes its `pyplot`
+API available for basic plotting, it is built on top of a very
+intricate hierarchy of classes and objects. Those who want more
+control over their plots are encouraged to use this interface instead
+of the simplified `pyplot` version.
+
+To get a feel for how Matplotlib uses composition to separate its
+concerns while having a large amount of functionality, we can write a
+small test function to recursively walk through a member variables of
+an object that are themselves instances of a non-builtin class.
+
+~~~
+from matplotlib.pyplot import subplots
+
+def traverse_objects(base_object, level=0, max_level=5):
+    """Recursively walk through the member variables of base_object,
+    and print out information about each that is an instance of a
+    non-built-in class. max_level controls the depth that the
+    recursion may continue to, to avoid infinite loops."""
+
+    if hasattr(base_object, '__dict__') and level < max_level:
+        for child_name, child_object in vars(base_object).items():
+            if child_object.__class__.__module__ != 'builtins':
+                print(" " * level, child_name, ':', type(child_object))
+                traverse_objects(child_object, level=level+1)
+
+
+# Create a simple plot
+fig, ax = plt.subplots()
+ax.scatter([1, 2, 3], [1, 4, 9])
+ax.scatter([1, 1.5, 2, 2.5, 3], [1, 1, 2, 3, 5])
+
+# Inspect the object hierarchy of ths figure object
+traverse_objects(fig)
+~~~
+{: .language-python}
+
+This gives a lot of output&mdash;72 lines, so in principle 72
+different classes are combining here. In practice this number is not
+accurate; there is some duplication in this list, since for example
+both `canvas` and `patch` have a `figure` member variable so that they
+can refer back to the `Figure` that they work with. Conversely, this
+simple traversal ignores some additional composition; for example,
+`fig._axstack._elements` is a list of tuples, but within some of those
+tuples are more objects of type `matplotlib.gridspec.SubplotSpec` and
+`matplotlib.axes._subplots.AxesSubplot`.
+
+This is why when you have errors in your code, tracebacks from some
+libraries can be quite long. Having lots of small methods in classes
+that are dedicated to one very specific aspect means that it is easier
+to reason about what each one is doing in isolation by itself, but can
+make it more complicated to get a view of the big picture.
+
+[hashable]: https://docs.python.org/library/collections.abc.html#collections.abc.Hashable
