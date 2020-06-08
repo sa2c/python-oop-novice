@@ -238,6 +238,13 @@ for number in FibonacciIterator(100):
 > {: .solution}
 {: .challenge}
 
+> ## Spot the problem
+>
+> Look back at the solutions for the `QuadraticPlotter`,
+> `PolynomialPlotter`, and `FunctionPlotter`. What problems do you see
+> with the `plot` method of these classes?
+{: .challenge}
+
 > ## Over to you
 >
 > Thinking about your own research software, what kind of places might
@@ -371,5 +378,12 @@ libraries can be quite long. Having lots of small methods in classes
 that are dedicated to one very specific aspect means that it is easier
 to reason about what each one is doing in isolation by itself, but can
 make it more complicated to get a view of the big picture.
+
+> ## Composing plotters
+>
+> How could the `FunctionPlotter`, `PolynomialPlotter`, and
+> `QuadraticPlotter` be refactored to make use of composition instead
+> of inheritance?
+{: .challenge}
 
 [hashable]: https://docs.python.org/library/collections.abc.html#collections.abc.Hashable
