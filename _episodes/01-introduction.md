@@ -77,8 +77,8 @@ In Python, anything which can be stored in a variable or passed to a function is
 > ## Class vs Type
 >
 > Note that in Object Oriented literature, you'll find a subtle
-> distinction between `class` and `type`. But, since the Python
-> implementation does not distinguish, we use these terms
+> distinction between `class` and `type`. But, since in Python
+> we can't have one without the other, we will use these terms
 > interchangably.
 {: .callout}
 
