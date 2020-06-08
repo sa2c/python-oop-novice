@@ -31,13 +31,13 @@ import numpy
 class QuadraticPlotter:
     color = 'red'
     linewidth = 1
-    
+
     def plot(self, a, b, c):
         '''Plot the line a * x ** 2 + b * x + c and output to the screen.
         x runs between -10 and 10, with 1000 intermediary points.
         The line is plotted in the colour specified by color, and with width
         linewidth.'''
-        
+
         fig, ax = matplotlib.pyplot.subplots()
         x = numpy.linspace(-10, 10, 1000)
         ax.plot(x, a * x ** 2 + b * x + c,
@@ -200,7 +200,7 @@ class QuadraticPlotter:
         x runs between x_min and x_max, with 1000 intermediary points.
         The line is plotted in the colour specified by color, and with width
         linewidth.'''
-        
+
         fig, ax = matplotlib.pyplot.subplots()
         x = numpy.linspace(-10, 10, 1000)
         ax.plot(x, a * x ** 2 + b * x + c,
