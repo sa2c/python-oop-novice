@@ -171,7 +171,7 @@ Line width of blue plotter is 5
 
 > ## Plots of fits
 >
-> The following function performs an Orthogonal Distance Regression
+> The following function performs an [Orthogonal Distance Regression][odr]
 > fit of some data, and plots the resulting fit line along with the
 > data.
 >
@@ -336,3 +336,5 @@ usable, rather than deferring these errors to a long way down the line.
 {: .challenge}
 
 {% include links.md %}
+
+[odr]: https://docs.scipy.org/doc/scipy/reference/odr.html
