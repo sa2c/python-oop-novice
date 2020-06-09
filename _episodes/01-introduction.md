@@ -48,9 +48,8 @@ print(numbers.mean())
 
 Let's see if we can do this with a normal list:
 ~~~
-import numpy
 more_numbers = [1, 2, 3, 4]
-print(numpy.mean(more_numbers))
+print(more_numbers.mean())
 ~~~
 {: .language-python}
 
