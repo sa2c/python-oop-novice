@@ -54,12 +54,10 @@ print(numpy.mean(more_numbers))
 ~~~
 {: .language-python}
 
-In this case Python will complain with an error.
+In this case Python will complain with an error. How does Python know it can do this for `numbers` but not `more_numbers`?
 
-How does Python know it can do this for `numbers` but not `more_numbers`?
-
-Let's investigate this further by using `type`
-to identify what the data type of `numbers` is:
+## What type is it?
+Let's investigate this further by using `type` to identify what the data type of `numbers` is:
 
 ~~~
 type(numbers)
