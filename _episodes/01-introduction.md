@@ -46,7 +46,17 @@ print(numbers.mean())
 ~~~
 {: .output}
 
-How does Python know it can do this?
+Let's see if we can do this with a normal list:
+~~~
+import numpy
+more_numbers = [1, 2, 3, 4]
+print(numpy.mean(more_numbers))
+~~~
+{: .language-python}
+
+In this case Python will complain with an error.
+
+How does Python know it can do this for `numbers` but not `more_numbers`?
 
 Let's investigate this further by using `type`
 to identify what the data type of `numbers` is:
@@ -289,6 +299,7 @@ All objects in Python are classified as mutable or immutable.
 >
 > Note: Be careful that you're not "cheating" by using `=` to point to a new object.
 {: .challenge}
+
 # Instances and Methods
 
 We can check if an object is an _instance of_ a particular class with the `isinstance` function.
