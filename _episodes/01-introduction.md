@@ -74,19 +74,18 @@ type(numbers)
 
 In Python, anything which can be stored in a variable or passed to a function is called an _object_. Objects are classified by their `type`, or their `class`.
 
-> ## Class vs Type
+> ## Class or Type?
 >
 > Note that in literature, you'll find a subtle
-> distinction between `class` and `type`. But, since in Python
-> we can't have one without the other, we will use the term class
-> interchangably.
+> distinction between _class_ and _type_. However, since in Python 3
+> we can't have one without the other, we will use both terms interchangably.
 {: .callout}
 
 > ## Let's find some types
 >
 > Can you find anything that you can store in a variable which
 > does not have a class? What is the type of the number `1`,
-> or the string `"hello"?
+> or the string `"hello"`?
 >
 > Does the class change if they are passed directly to `type`,
 > or if they are stored in a variable?
@@ -99,17 +98,17 @@ In Python, anything which can be stored in a variable or passed to a function is
 >> {: .language-python}
 >>
 >> ~~~
->> <type 'int'>
+>> <class 'int'>
 >> ~~~
 >> {: .output}
 >>
 >> ~~~
->> type([1,2,3])
+>> type("hello")
 >> ~~~
 >> {: .language-python}
 >>
 >> ~~~
->> <type 'list'>
+>> <class 'string'>
 >> ~~~
 >> {: .output}
 > {: .solution}
@@ -118,8 +117,7 @@ In Python, anything which can be stored in a variable or passed to a function is
 > ## Does everything have a class?
 >
 > Try to find words that python recognises that do not have classes. What about `numpy.mean` or `numpy`?
->
-> What about `if` or `for`?
+> What about `if` or `for`? Can you think of others?
 >
 >> ## Solution
 >>
@@ -129,7 +127,7 @@ In Python, anything which can be stored in a variable or passed to a function is
 >> {: .language-python}
 >>
 >> ~~~
->> <type 'function'>
+>> <class 'function'>
 >> ~~~
 >> {: .output}
 >>
@@ -139,9 +137,10 @@ In Python, anything which can be stored in a variable or passed to a function is
 >> {: .language-python}
 >>
 >> ~~~
->> <type 'module'>
+>> <class 'module'>
 >> ~~~
 >> {: .output}
+>> The objects `numpy.mean` and `numpy` are things that we typically wouldn't store in variables or passed around. However, they could in principle be stored in variables, and therefore are objects with a class.
 >> ~~~
 >> type(if)
 >> ~~~
@@ -174,23 +173,23 @@ In Python, anything which can be stored in a variable or passed to a function is
 
 In python, there are two ways in which objects can behave.
 
-Some objects, like integers, string or tuples, are created with one value, and they then keep the same value forever.
+Arguably the most intuitive case is when object are created with a value, and they keep the same value forever.
 
-Let's create a variable:
+Let's store a object of class `string` in a variable:
 ~~~
-a = "hello"
+hello = "hello"
 ~~~
 {: .language-python}
 
-And add one to that variable, and store the result in b:
+Next, we add another string to that object, and store the resulting object in a variable `b`:
 ~~~
-b = a + " world"
+hello_world = hello + " world"
 ~~~
 {: .language-python}
 
-The value of `a` remains unchanged.
+The value of the first object remains unchanged.
 ~~~
-print(a)
+print(hello)
 ~~~
 {: .language-python}
 
@@ -199,9 +198,9 @@ print(a)
 ~~~
 {: .output}
 
-You're probably not surprised by this, but there is something very fundamental going on here.
+You're probably not at all surprised by this, but there is something very fundamental going on here.
 
-There is absolutely nothing we can do which will change the value of the underlying object that is referred to by the variable `a`. This kind of object is called _immutable_, it can't be changed (or _mutated_) once it has been created. It is created with a given value, and it keeps that same value forever.
+There is nothing we can do which will change the value of the underlying object that is referred to by the variable `a`. This kind of object is called _immutable_, it can't be changed (or _mutated_) once it has been created. It is created with a given value, and it keeps that same value forever.
 
 > ## Assignment doesn't count
 >
@@ -212,25 +211,27 @@ There is absolutely nothing we can do which will change the value of the underly
 
 Not all objects in Python are immutable. Consider the following list of strings:
 ~~~
-a = ["We", "probably", "can't", "change", "this"]
+maybe = ["We", "probably", "can't", "change", "this"]
 ~~~
 {: .language-python}
 
-Let's assign `a` to a new variable, this essentially points `b` at the object created by `a`:
+Let's assign `maybe` to a new variable, `same_maybe`:
 ~~~
-b = a
-~~~
-{: .language-python}
-
-Let's now change `b`:
-~~~
-b[2] = "can"
+same_maybe = quote
 ~~~
 {: .language-python}
 
-What is the value of `a` now?
+Think of this as pointing `same_maybe` at the _same object_ contained in `quote`:
+
+Now let's change a part of `same_maybe`:
 ~~~
-print(a)
+same_maybe[2] = "can"
+~~~
+{: .language-python}
+
+What is the value of `maybe` now?
+~~~
+print(maybe)
 ~~~
 {: .language-python}
 
@@ -239,12 +240,54 @@ print(a)
 ~~~
 {: .output}
 
-Note how we changed `a` through the variable `b`. We can do this because both `a` and `b` refer to the same underlying object.
+Note how we changed `maybe` through the variable `same_quote`. We can do this because both `quote` and `same_quote` refer to the same underlying object, and that underlying object can be changed.
 
-Importantly, the underlying object can be changed. And the value referenced by both variables also changes. We call these objects _mutable_. The can be "mutated" after they're created.
+We say that these objects are _mutable_. The can be "mutated" after they're created.
 
 All objects in Python are classified as mutable or immutable.
 
+> ## Immutable lists
+>
+> Python has a class similar to a list called a `tuple`. Is a `tuple` mutable or immutable?
+>
+> Check if you can change a tuple by setting:
+>
+> ~~~
+> maybe = ("Maybe", "we", "can't", "change", "this?")
+> ~~~
+> {: .language-python}
+>
+> and trying to modify the 3rd element with:
+> ~~~
+> maybe[2] = "can"
+> ~~~
+> {: .language-python}
+>
+>> ## solution
+>>
+>> ~~~
+>> maybe = ("Maybe", "we", "can't", "change", "this?")
+>> maybe[2] = "can"
+>> ~~~
+>> {: .language-python}
+>>
+>> You should see an error containing the text:
+>> ~~~
+>> TypeError: 'tuple' object does not support item assignment
+>> ~~~
+>> {: .output}
+>>
+>> This is telling you that you can't modify the tuple object, this is true because the tuple object is immutable.
+>> {: .output}
+> {: .solution}
+{: .challenge}
+
+> ## What kind of objects?
+>
+> List some objects that you think are mutable and immutable. Verify this by trying to find ways to change the objects.
+>
+> Note: Be careful that you're not "cheating" by using `=` to point to a new object.
+{: .challenge}
 # Methods
 
 We can check if an object is an _instance of_ a particular class with the `isinstance` function.
@@ -259,49 +302,47 @@ True
 ~~~
 {: .output}
 
-Every object is created with a single class, which cannot be changed.
+Every object is created with a single class, and this can't be changed.
 
-Objects can have functions associated with them. The functions associated with an object are determined by the class of the object.
-
-For example, as above
+Any object can have functions associated with it, which can be called with a dot syntax, like:
 ~~~
 numbers.mean()
 ~~~
 {: .language-python}
 
-The `numbers` object has a `mean` function provided by the `numpy.ndarray` class. This allows objects of a `numpy.ndarray` to provide functionality specific to that type of object.
+The functions which are associated with an object are determined by the class of the object. When a class provides a function to an object we call this function a _method_ of that class.
 
-Mutable objects can have methods too:
+For example, the `numbers` object has a `mean` _method_ provided by the `numpy.ndarray` class. This allows objects of a `numpy.ndarray` to provide functionality specific to objects of class `numpy.ndarray`.
+
+Immutable objects can have methods too:
 ~~~
 hello = "hello, world"
 print(hello.capitalize())
 ~~~
 {: .language-python}
 
-When a function is associated to an object we call it a _method_ of the object, and we call it by using a dot, for example: `object_name.method_name()`
-
 > ## Changing places
 >
 > It's worth noting that methods of immutable objects can't change
-> the underlying object. They always return a brand new object with the new value. We can see this in action by looking at the variable `hello` after capitalisation above. The value of the object has not been changed. 
+> the underlying object. They always return a brand new object, and set the expected value in the new object. We can see this in action by looking at the variable `hello` after capitalisation above. The value of the object has not been changed. 
 >
 > Methods on mutable object, however, will typically change the object itself.
 {. :callout}
 
 We then say that particular objects are _instances_ of the class. To use a real world example, a chair is a particular type or class of object. The chair that you are sitting on right now is a specific _instance_ of the class of all chairs.
 
-> ## Finding out what things are
+> ## finding out what things are
 >
-> Use `type()` to find the type of `students`, defined as
+> use `type()` to find the type of `students`, defined as
 >
 > ~~~
-> students = ['Petra', 'Aalia', 'Faizan', 'Shona']
+> students = ['petra', 'aalia', 'faizan', 'shona']
 > ~~~
 > {: .language-python}
 >
-> Check this with `isinstance`
+> check this with `isinstance`
 >
->> ## Solution
+>> ## solution
 >>
 >> ~~~
 >> type(students)

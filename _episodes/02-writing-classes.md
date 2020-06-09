@@ -16,12 +16,11 @@ keypoints:
 - "The `__init__` method is called when instances are constructed"
 ---
 
-One important aim when programming is to reduce the amount of repetition as
-much as practical. In many cases, using objects will help with this, since
-they can carry state that would otherwise have to be passed between functions
-explicitly.
+In the previous section, we've seen how objects can have different behaviour, provided by methods, which in turn are provided by the class of an object.
 
-For example, if we wanted to plot a variety of quadratic functions, with a
+But what if we want to make our own classes and objects?
+
+If we wanted to plot a variety of quadratic functions, with a
 consistent set of styles, we could define a class that does this:
 
 ~~~
@@ -48,8 +47,18 @@ class QuadraticPlotter:
 
 Similarly to how `def` is used to define a function, the `class` keyword is
 used to define a new class. Both functions and variables can be created inside
-the class block, and these will be accessible on objects of the class that are
+the class block, and these will be accessible on any objects of the class that are
 created.
+
+> ## Examples
+>
+> Note that the example is a simple illustration of building a class, but if the use case is as simple as the one above,
+> a simpler choice might be a function like:
+> ~~~
+> plot(a, b, c, color = 'red', linewidth = 1)
+> ~~~
+> {: .language-python}
+{: .callout}
 
 When functions are defined within a class, they will become methods of instances
 of the class. In order for the function to be aware of the object that they need
