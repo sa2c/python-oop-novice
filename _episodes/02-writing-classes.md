@@ -55,7 +55,7 @@ created.
 > Note that the example is a simple illustration of building a class, but if the use case is as simple as the one above,
 > a simpler choice might be a function like:
 > ~~~
-> plot(a, b, c, color = 'red', linewidth = 1)
+> plot(a, b, c, color='red', linewidth=1)
 > ~~~
 > {: .language-python}
 {: .callout}
