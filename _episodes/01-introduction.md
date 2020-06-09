@@ -1,19 +1,19 @@
 ---
-title: "Classes and Objects"
+title: "Objects in Python"
 teaching: 20
 exercises: 15
 questions:
-- "Why is object oriented programming useful?"
 - "Where are classes and objects encountered in Python?"
-- "How can objects be created from a class?"
 - "How can objects correspond to more than one class?"
+- "How can objects be created from a class?"
 objectives:
-- "Be able to distinguish between classes and objects"
+- "Be able to distinguish between class and object"
 - "Be able to construct objects via a class's constructor"
 - "Be able to distinguish between equality and identity of objects"
 keypoints:
-- "Object oriented programming allows related sets of data and functionality to be grouped together"
-- "`list` and `numpy.ndarray` are very commonly-used classes; lists and arrays are corresponding objects"
+- "Anything that we can store in a variable in Python is an object"
+- "Every object in Python has a class (or type)"
+- "`list` and `numpy.ndarray` are commonly-used classes; lists and arrays are corresponding objects"
 - "Calling the class as a function constructs new objects of that class"
 - "Classes can inherit from other classes; objects of the subclass are automatically also of the parent class"
 ---
