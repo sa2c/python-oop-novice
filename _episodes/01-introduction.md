@@ -282,7 +282,11 @@ We say that objects which can't be changed, like numbers and string, are _immuta
 
 ## Instances and Methods
 
-We say that an object of a particular class is an _instance_ of that class. To use a real world example, we could have the type or class `chair` which describes to all the chairs in the world. The chair that you are sitting on right now is a specific _instance_ of the chair class.
+We say that an object of a particular class is an _instance_ of that
+class. To use a real world example, we could have the type or class
+`Chair` which describes to all the chairs in the world. The chair that
+you are sitting on right now is a specific _instance_ of the chair
+class.
 
 We can check if an object is an _instance of_ a particular class with the `isinstance` function.
 
