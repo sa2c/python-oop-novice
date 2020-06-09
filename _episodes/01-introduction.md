@@ -184,43 +184,38 @@ In Python, anything which can be stored in a variable or passed to a function is
 
 In python, there are two ways in which objects can behave.
 
-Arguably the most intuitive case is when object are created with a value, and they keep the same value forever.
+The most intuitive case is when object are created with a value, and they keep the value forever. Many objects we're familiar with, such as integers or strings, are value objects.
 
-Let's store a object of class `string` in a variable:
+Let's store a string in a variable:
 ~~~
-hello = "hello"
-~~~
-{: .language-python}
-
-Next, we add another string to that object, and store the resulting object in a variable `b`:
-~~~
-hello_world = hello + " world"
+string_one = "hello"
 ~~~
 {: .language-python}
 
-The value of the first object remains unchanged.
+The variable `string_one` now refers to an object, which has the value `1000`.
+
+We can point another variable at the same object with:
 ~~~
-print(hello)
+string_two = string_one
 ~~~
 {: .language-python}
 
+But, we can never change the value of the string object itself. The string "hello" will always be the string "hello". We can set the variable to a new object, with
 ~~~
-"hello"
+string_two = string_one + ", world"
 ~~~
-{: .output}
+{: .language-python}
 
-You're probably not at all surprised by this, but there is something very fundamental going on here.
+But the original object is still there, unchanged. We can still type:
+~~~
+print(string_one)
+~~~
+{: .language-python}
 
-There is nothing we can do which will change the value of the underlying object that is referred to by the variable `a`. This kind of object is called _immutable_, it can't be changed (or _mutated_) once it has been created. It is created with a given value, and it keeps that same value forever.
+This may not be surprising, but not all objects in Python behave this way.
 
-> ## Assignment doesn't count
->
-> At first glance, it might seem that we can change the value of the object which `a` points to with `a = 2`.
->
-> In practice however, this is actually pointing `a` to a new object, and the original object remains unchanged.
-{: .callout}
 
-Not all objects in Python are immutable. Consider the following list of strings:
+Consider the following list of strings:
 ~~~
 maybe = ["We", "probably", "can't", "change", "this"]
 ~~~
@@ -228,11 +223,11 @@ maybe = ["We", "probably", "can't", "change", "this"]
 
 Let's assign `maybe` to a new variable, `same_maybe`:
 ~~~
-same_maybe = quote
+same_maybe = maybe
 ~~~
 {: .language-python}
 
-Think of this as pointing `same_maybe` at the _same object_ contained in `quote`:
+Think of this as pointing `same_maybe` at the _same object_ contained in `maybe`:
 
 Now let's change a part of `same_maybe`:
 ~~~
@@ -251,11 +246,11 @@ print(maybe)
 ~~~
 {: .output}
 
-Note how we changed `maybe` through the variable `same_quote`. We can do this because both `quote` and `same_quote` refer to the same underlying object, and that underlying object can be changed.
+Note how we changed `maybe` through the variable `same_maybe`. We can do this because both `maybe` and `same_maybe` refer to the same underlying object, and that underlying object can be changed.
 
-We say that these objects are _mutable_. The can be "mutated" after they're created.
+We say that objects which can't be changed, like numbers and string, are _immutable_. Numbers are an intuitive example of immutable objects, the number 1000 will always be the number 1000.
 
-All objects in Python are classified as mutable or immutable.
+We say that these objects that can be changed are _mutable_, they can be "mutated" after they've created.
 
 > ## Immutable lists
 >
