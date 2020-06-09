@@ -178,7 +178,7 @@ We can see here that `numbers` is an object of the type `numpy.ndarray`. In Pyth
 
 # Ch-Ch-Changes
 
-In Python, there are two ways in which objects can behave. The most intuitive case is when object are created with a value, and they keep the value forever. Many objects we're familiar with, such as integers or strings, are value objects.
+In Python, there are two ways in which objects can behave. The most intuitive case is when object are created with a value, and they keep the value forever. Many objects we're familiar with, such as integers or strings, are objects which hold a value.
 
 Let's store a string in a variable:
 ~~~
