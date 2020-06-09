@@ -3,8 +3,9 @@ title: "Objects in Python"
 teaching: 20
 exercises: 15
 questions:
-- "Where are classes and objects encountered in Python?"
-- "How can objects correspond to more than one class?"
+- "What are objects in Python?"
+- "What is a class or type?"
+- "Can objects belong to more than one class?"
 - "How can objects be created from a class?"
 objectives:
 - "Be able to distinguish between class and object"
