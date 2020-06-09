@@ -254,7 +254,7 @@ We say that objects which can't be changed, like numbers and string, are _immuta
 > ~~~
 > {: .language-python}
 >
->> ## solution
+>> ## Solution
 >>
 >> ~~~
 >> maybe = ("Maybe", "we", "can't", "change", "this?")
@@ -335,7 +335,7 @@ We then say that particular objects are _instances_ of the class. To use a real 
 >
 > and check this with `isinstance`.
 >
->> ## solution
+>> ## Solution
 >>
 >> ~~~
 >> type(students)
