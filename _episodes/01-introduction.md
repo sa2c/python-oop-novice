@@ -333,7 +333,7 @@ print(hello.capitalize())
 > Methods of mutable object can (and often do) change the class.
 >
 > Methods on mutable object, however, will typically change the object itself.
-{. :callout}
+{. .callout}
 
 We then say that particular objects are _instances_ of the class. To use a real world example, a chair is a particular type or class of object. The chair that you are sitting on right now is a specific _instance_ of the class of all chairs.
 
