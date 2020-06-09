@@ -421,9 +421,14 @@ print(type(students))
 >>
 >> ~~~
 >> student_grades = dict(zip(students, grades))
->> isinstance(student_grades)
+>> isinstance(student_grades, dict)
 >> ~~~
 >> {: .language-python}
+>>
+>> ~~~
+>> True
+>> ~~~
+>> {: .output}
 > {: .solution}
 {: .challenge}
 
