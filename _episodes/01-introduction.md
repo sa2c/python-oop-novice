@@ -192,7 +192,7 @@ string_one = "hello"
 ~~~
 {: .language-python}
 
-The variable `string_one` now refers to an object, which has the value `1000`.
+The variable `string_one` now refers to an object, which has the value `"hello"`.
 
 We can point another variable at the same object with:
 ~~~
