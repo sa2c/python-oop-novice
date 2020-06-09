@@ -289,7 +289,7 @@ All objects in Python are classified as mutable or immutable.
 >
 > Note: Be careful that you're not "cheating" by using `=` to point to a new object.
 {: .challenge}
-# Methods
+# Instances and Methods
 
 We can check if an object is an _instance of_ a particular class with the `isinstance` function.
 
