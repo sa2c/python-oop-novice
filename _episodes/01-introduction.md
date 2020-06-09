@@ -210,13 +210,13 @@ maybe = ["We", "probably", "can't", "change", "this"]
 ~~~
 {: .language-python}
 
-Let's assign `maybe` to a new variable, `same_maybe`:
+Let's point new variable `same_maybe` at the list
 ~~~
 same_maybe = maybe
 ~~~
 {: .language-python}
 
-Think of this as pointing `same_maybe` at the _same object_ contained in `maybe`: Now let's change a part of `same_maybe`:
+Think of this as pointing `same_maybe` at the _same underlying object_ contained in `maybe`: Now let's change a part of `same_maybe`:
 ~~~
 same_maybe[2] = "can"
 ~~~
