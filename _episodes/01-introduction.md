@@ -68,6 +68,17 @@ type(numbers)
 ~~~
 {: .output}
 
+What about the type of the variable `more_numbers`?
+
+~~~
+type(more_numbers)
+~~~
+{: .language-python}
+
+~~~
+<class 'list'>
+~~~
+{: .output}
 We can see here that `numbers` is an object of the type `numpy.ndarray`. In Python, anything which can be stored in a variable or passed to a function is called an _object_. Objects are classified by their `type`, or their `class`.
 
 > ## Class or Type?
@@ -112,8 +123,7 @@ We can see here that `numbers` is an object of the type `numpy.ndarray`. In Pyth
 
 > ## Does everything have a class?
 >
-> Try to find words that Python recognises that do not have
-> classes. What about `numpy.mean` or `numpy`?
+> Try to find words that Python recognises that do not have classes. What about `numpy.mean` or `numpy`?
 > What about `if` or `for`? Can you think of others?
 >
 >> ## Solution
@@ -168,7 +178,7 @@ We can see here that `numbers` is an object of the type `numpy.ndarray`. In Pyth
 
 # Ch-Ch-Changes
 
-In python, there are two ways in which objects can behave. The most intuitive case is when object are created with a value, and they keep the value forever. Many objects we're familiar with, such as integers or strings, are value objects.
+In Python, there are two ways in which objects can behave. The most intuitive case is when object are created with a value, and they keep the value forever. Many objects we're familiar with, such as integers or strings, are value objects.
 
 Let's store a string in a variable:
 ~~~
