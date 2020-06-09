@@ -112,7 +112,8 @@ We can see here that `numbers` is an object of the type `numpy.ndarray`. In Pyth
 
 > ## Does everything have a class?
 >
-> Try to find words that python recognises that do not have classes. What about `numpy.mean` or `numpy`?
+> Try to find words that Python recognises that do not have
+> classes. What about `numpy.mean` or `numpy`?
 > What about `if` or `for`? Can you think of others?
 >
 >> ## Solution
@@ -318,7 +319,7 @@ We then say that particular objects are _instances_ of the class. To use a real 
 > use `type()` to find the type of `students`, defined as
 >
 > ~~~
-> students = ['petra', 'aalia', 'faizan', 'shona']
+> students = ['Petra', 'Aalia', 'Faizan', 'Shona']
 > ~~~
 > {: .language-python}
 >
