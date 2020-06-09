@@ -282,7 +282,7 @@ We say that objects which can't be changed, like numbers and string, are _immuta
 
 # Instances and Methods
 
-We can check if an object is an _instance of_ a particular class with the `isinstance` function.
+We say that an object of a particular class is an _instance_ of that class. To use a real world example, we could have the type of class `chair` which describes to all the chairs in the world. The chair that you are sitting on right now is a specific _instance_ of the chair class. We can check if an object is an _instance of_ a particular class with the `isinstance` function.
 
 ~~~
 isinstance(numbers, numpy.ndarray)
@@ -294,35 +294,40 @@ True
 ~~~
 {: .output}
 
-Every object is created with a single class, and this can't be changed.
-
-Any object can have functions associated with it, which can be called by using a dot after the variable name, for example:
+Every object is created with a single class, and which can't be changed. The class of an object can also provide behaviour that the object might have, by providing functions to objects in its class. These functions can be called by using a dot after the variable name, for example:
 ~~~
 numbers.mean()
 ~~~
 {: .language-python}
 
-The functions which are associated with an object are provided by the class of the object. When a class provides a function to an object we call that function a _method_ of that class.
+The functions which are associated with an object are provided by the class of the object. When a class provides a function to an object we call that function a _method_ of the class.
 
 We say that the `numpy.ndarray` class provides the `mean` _method_. Since `numbers` belongs to the class `numpy.ndarray`, we can use the `mean` method on the object referred to by `numbers`, by calling `numbers.mean()`. This allows objects of a `numpy.ndarray` to provide functionality specific to objects of class `numpy.ndarray`.
 
-Immutable objects can have methods too:
+Note that immutable objects can have methods too, but these methods are not allowed to not modify the object:
 ~~~
-hello = "hello, world"
-print(hello.capitalize())
 ~~~
 {: .language-python}
 
-> ## Changing places
->
-> It's worth noting that both mutable and immutable objects can have methods. Methods of immutable objects however can't change
-> the underlying object.  They always return a brand new object, and set the expected value in the new object.
-> Methods of mutable object can (and often do) change the class.
->
-> Methods on mutable object, however, will typically change the object itself.
-{: .callout}
+It's worth noting that both mutable and immutable objects can have methods. Methods of immutable objects however can't change
+the underlying object. If needed, they will return a brand new object, and set the expected value in the new object. To keep this change,
+you will need to store it in a variable, for example:
+~~~
+hello = "hello, world"
+hello = hello.capitalize()
+print(hello)
+~~~
+{: .language-python}
 
-We then say that particular objects are _instances_ of the class. To use a real world example, a chair is a particular type or class of object. The chair that you are sitting on right now is a specific _instance_ of the class of all chairs, it is a type of chair.
+Methods of mutable object can, and often do, change the class.
+~~~
+a = [1,2,3]
+a.append(4)
+print(a)
+~~~
+{: .language-python}
+
+In this case, we don't need the extra `=` to assign the value to a new object.
 
 > ## Finding out what things are
 >
