@@ -178,7 +178,7 @@ We can see here that `numbers` is an object of the type `numpy.ndarray`. In Pyth
 
 # Ch-Ch-Changes
 
-In Python, there are two ways in which objects can behave. The most intuitive case is when object are created with a value, and they keep the value forever. Many objects we're familiar with, such as integers or strings, are value objects.
+In Python, there are two ways in which objects can behave. The most intuitive case is when object are created with a value, and they keep the value forever. Many objects we're familiar with, such as integers or strings, are objects which hold a value.
 
 Let's store a string in a variable:
 ~~~
@@ -322,9 +322,9 @@ print(hello.capitalize())
 > Methods on mutable object, however, will typically change the object itself.
 {: .callout}
 
-We then say that particular objects are _instances_ of the class. To use a real world example, a chair is a particular type or class of object. The chair that you are sitting on right now is a specific _instance_ of the class of all chairs.
+We then say that particular objects are _instances_ of the class. To use a real world example, a chair is a particular type or class of object. The chair that you are sitting on right now is a specific _instance_ of the class of all chairs, it is a type of chair.
 
-> ## finding out what things are
+> ## Finding out what things are
 >
 > use `type()` to find the type of `students`, defined as
 >
@@ -333,7 +333,7 @@ We then say that particular objects are _instances_ of the class. To use a real 
 > ~~~
 > {: .language-python}
 >
-> check this with `isinstance`
+> and check this with `isinstance`.
 >
 >> ## solution
 >>
