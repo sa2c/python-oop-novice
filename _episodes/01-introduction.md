@@ -68,6 +68,17 @@ type(numbers)
 ~~~
 {: .output}
 
+What about the type of the variable `more_numbers`?
+
+~~~
+type(more_numbers)
+~~~
+{: .language-python}
+
+~~~
+<class 'list'>
+~~~
+{: .output}
 We can see here that `numbers` is an object of the type `numpy.ndarray`. In Python, anything which can be stored in a variable or passed to a function is called an _object_. Objects are classified by their `type`, or their `class`.
 
 > ## Class or Type?
