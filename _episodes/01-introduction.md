@@ -123,7 +123,7 @@ We can see here that `numbers` is an object of the type `numpy.ndarray`. In Pyth
 
 > ## Does everything have a class?
 >
-> Try to find words that python recognises that do not have classes. What about `numpy.mean` or `numpy`?
+> Try to find words that Python recognises that do not have classes. What about `numpy.mean` or `numpy`?
 > What about `if` or `for`? Can you think of others?
 >
 >> ## Solution
@@ -178,7 +178,7 @@ We can see here that `numbers` is an object of the type `numpy.ndarray`. In Pyth
 
 # Ch-Ch-Changes
 
-In python, there are two ways in which objects can behave. The most intuitive case is when object are created with a value, and they keep the value forever. Many objects we're familiar with, such as integers or strings, are value objects.
+In Python, there are two ways in which objects can behave. The most intuitive case is when object are created with a value, and they keep the value forever. Many objects we're familiar with, such as integers or strings, are value objects.
 
 Let's store a string in a variable:
 ~~~
