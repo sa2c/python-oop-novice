@@ -68,19 +68,7 @@ type(numbers)
 ~~~
 {: .output}
 
-We can see here that `numbers` is an object of the type `numpy.ndarray`.
-
-~~~
-type(numbers)
-~~~
-{: .language-python}
-
-~~~
-<class 'int'>
-~~~
-{: .output}
-
-In Python, anything which can be stored in a variable or passed to a function is called an _object_. Objects are classified by their `type`, or their `class`.
+We can see here that `numbers` is an object of the type `numpy.ndarray`. In Python, anything which can be stored in a variable or passed to a function is called an _object_. Objects are classified by their `type`, or their `class`.
 
 > ## Class or Type?
 >
@@ -179,9 +167,7 @@ In Python, anything which can be stored in a variable or passed to a function is
 
 # Ch-Ch-Changes
 
-In python, there are two ways in which objects can behave.
-
-The most intuitive case is when object are created with a value, and they keep the value forever. Many objects we're familiar with, such as integers or strings, are value objects.
+In python, there are two ways in which objects can behave. The most intuitive case is when object are created with a value, and they keep the value forever. Many objects we're familiar with, such as integers or strings, are value objects.
 
 Let's store a string in a variable:
 ~~~
@@ -189,9 +175,7 @@ string_one = "hello"
 ~~~
 {: .language-python}
 
-The variable `string_one` now refers to an object, which has the value `"hello"`.
-
-We can point another variable at the same object with:
+The variable `string_one` now refers to an object, which has the value `"hello"`. We can point another variable at the same object with:
 ~~~
 string_two = string_one
 ~~~
@@ -203,16 +187,13 @@ string_two = string_one + ", world"
 ~~~
 {: .language-python}
 
-But the original object is still there, unchanged. We can still type:
+But the original object is still there, unchanged. We can still get to it by typing
 ~~~
 print(string_one)
 ~~~
 {: .language-python}
 
-This may not seem surprising, but not all objects in Python behave this way.
-
-
-Consider the following list of strings:
+This may not seem surprising, but not all objects in Python behave this way. Consider the following list of strings:
 ~~~
 maybe = ["We", "probably", "can't", "change", "this"]
 ~~~
@@ -224,9 +205,7 @@ same_maybe = maybe
 ~~~
 {: .language-python}
 
-Think of this as pointing `same_maybe` at the _same object_ contained in `maybe`:
-
-Now let's change a part of `same_maybe`:
+Think of this as pointing `same_maybe` at the _same object_ contained in `maybe`: Now let's change a part of `same_maybe`:
 ~~~
 same_maybe[2] = "can"
 ~~~
@@ -245,9 +224,7 @@ print(maybe)
 
 Note how we changed `maybe` through the variable `same_maybe`. We can do this because both `maybe` and `same_maybe` refer to the same underlying object, and that underlying object can be changed.
 
-We say that objects which can't be changed, like numbers and string, are _immutable_. Numbers are an intuitive example of immutable objects, the number 1000 will always be the number 1000.
-
-We say that these objects that can be changed are _mutable_, they can be "mutated" after they've created.
+We say that objects which can't be changed, like numbers and string, are _immutable_. Numbers are an intuitive example of immutable objects, the number 1000 will always be the number 1000. We say that these objects that can be changed are _mutable_, they can be "mutated" after they've created.
 
 > ## Immutable lists
 >
