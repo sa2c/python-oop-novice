@@ -324,16 +324,16 @@ print(hello.capitalize())
 
 We then say that particular objects are _instances_ of the class. To use a real world example, a chair is a particular type or class of object. The chair that you are sitting on right now is a specific _instance_ of the class of all chairs, it is a type of chair.
 
-> ## finding out what things are
+> ## Finding out what things are
 >
 > use `type()` to find the type of `students`, defined as
 >
 > ~~~
-> students = ['petra', 'aalia', 'faizan', 'shona']
+> students = ['Petra', 'Aalia', 'Faizan', 'Shona']
 > ~~~
 > {: .language-python}
 >
-> check this with `isinstance`
+> and check this with `isinstance`.
 >
 >> ## solution
 >>
