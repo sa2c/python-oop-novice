@@ -176,7 +176,7 @@ We can see here that `numbers` is an object of the type `numpy.ndarray`. In Pyth
 > {: .solution}
 {: .challenge}
 
-# Ch-Ch-Changes
+## Ch-Ch-Changes
 
 In Python, there are two ways in which objects can behave. The most intuitive case is when object are created with a value, and they keep the value forever. Many objects we're familiar with, such as integers or strings, are objects which hold a value.
 
@@ -280,7 +280,7 @@ We say that objects which can't be changed, like numbers and string, are _immuta
 > Note: Be careful that you're not "cheating" by using `=` to point to a new object.
 {: .challenge}
 
-# Instances and Methods
+## Instances and Methods
 
 We can check if an object is an _instance of_ a particular class with the `isinstance` function.
 
