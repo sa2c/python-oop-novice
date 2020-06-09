@@ -419,6 +419,8 @@ print(type(students))
 > ~~~
 > {: .language-python}
 >
+> You can check the type of the object you've created with `isinstance`
+>
 > Hint: `zip()` can be used to turn two lists into tuples of corresponding
 > pairs of elements.
 >
@@ -426,6 +428,7 @@ print(type(students))
 >>
 >> ~~~
 >> student_grades = dict(zip(students, grades))
+>> isinstance(student_grades)
 >> ~~~
 >> {: .language-python}
 > {: .solution}
