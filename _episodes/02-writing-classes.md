@@ -135,6 +135,11 @@ Line width of blue plotter is 5
 ~~~
 {: .output}
 
+> ## Mutation revisitied
+>
+> Note that the classes we create ourselves in this way will produce mutable objects. This means that we can change the values in objects of `plotter.linewidth`, and Python allows us to do that. It doesn't throw an error.
+{: .callout}
+
 > ## Zoom in
 >
 > Currently `QuadraticPlotter` is hardcoded to plot between -10 and 10.
@@ -142,7 +147,8 @@ Line width of blue plotter is 5
 > and `linewidth` can, while keeping the current defaults.
 >
 > Use the new class to plot the curve with `a = 3, b = 2, c = 1` both between
-> -10 and 10, and between -5 and 50.
+> -10 and 10, and between -5 and 50. Do this without changing the
+> arguments to the `plot` method.
 >
 >> ## Solution
 >>
@@ -300,8 +306,8 @@ usable, rather than deferring these errors to a long way down the line.
 
 > ## Zoom in again
 >
-> Try rewriting the "Zoom in" example above to set the bounds of the plot
-> using arguments to the constructor.
+> Try rewriting the "Zoom in" example above to set the bounds of the plot,
+> as well as the `color` and `linewidth`, using arguments to the constructor.
 >
 >> ## Solution
 >>

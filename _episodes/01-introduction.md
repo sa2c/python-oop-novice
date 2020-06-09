@@ -305,15 +305,15 @@ True
 
 Every object is created with a single class, and this can't be changed.
 
-Any object can have functions associated with it, which can be called with a dot syntax, like:
+Any object can have functions associated with it, which can be called by using a dot after the variable name, for example:
 ~~~
 numbers.mean()
 ~~~
 {: .language-python}
 
-The functions which are associated with an object are determined by the class of the object. When a class provides a function to an object we call this function a _method_ of that class.
+The functions which are associated with an object are provided by the class of the object. When a class provides a function to an object we call that function a _method_ of that class.
 
-For example, the `numbers` object has a `mean` _method_ provided by the `numpy.ndarray` class. This allows objects of a `numpy.ndarray` to provide functionality specific to objects of class `numpy.ndarray`.
+We say that the `numpy.ndarray` class provides the `mean` _method_. Since `numbers` belongs to the class `numpy.ndarray`, we can use the `mean` method on the object referred to by `numbers`, by calling `numbers.mean()`. This allows objects of a `numpy.ndarray` to provide functionality specific to objects of class `numpy.ndarray`.
 
 Immutable objects can have methods too:
 ~~~
@@ -324,8 +324,9 @@ print(hello.capitalize())
 
 > ## Changing places
 >
-> It's worth noting that methods of immutable objects can't change
-> the underlying object. They always return a brand new object, and set the expected value in the new object. We can see this in action by looking at the variable `hello` after capitalisation above. The value of the object has not been changed. 
+> It's worth noting that both mutable and immutable objects can have methods. Methods of immutable objects however can't change
+> the underlying object.  They always return a brand new object, and set the expected value in the new object.
+> Methods of mutable object can (and often do) change the class.
 >
 > Methods on mutable object, however, will typically change the object itself.
 {. :callout}
