@@ -282,7 +282,9 @@ We say that objects which can't be changed, like numbers and string, are _immuta
 
 ## Instances and Methods
 
-We say that an object of a particular class is an _instance_ of that class. To use a real world example, we could have the type or class `chair` which describes to all the chairs in the world. The chair that you are sitting on right now is a specific _instance_ of the chair class. We can check if an object is an _instance of_ a particular class with the `isinstance` function.
+We say that an object of a particular class is an _instance_ of that class. To use a real world example, we could have the type or class `chair` which describes to all the chairs in the world. The chair that you are sitting on right now is a specific _instance_ of the chair class.
+
+We can check if an object is an _instance of_ a particular class with the `isinstance` function.
 
 ~~~
 isinstance(numbers, numpy.ndarray)
@@ -304,12 +306,7 @@ The functions which are associated with an object are provided by the class of t
 
 We say that the `numpy.ndarray` class provides the `mean` _method_. Since `numbers` belongs to the class `numpy.ndarray`, we can use the `mean` method on the object referred to by `numbers`, by calling `numbers.mean()`. This allows objects of a `numpy.ndarray` to provide functionality specific to objects of class `numpy.ndarray`.
 
-Note that immutable objects can have methods too, but these methods are not allowed to not modify the object:
-~~~
-~~~
-{: .language-python}
-
-It's worth noting that both mutable and immutable objects can have methods. Methods of immutable objects however can't change
+It's worth noting that both mutable and immutable objects can have methods. Methods of immutable objects, however, can't change
 the underlying object. If needed, they will return a brand new object, and set the expected value in the new object. To keep this change,
 you will need to store it in a variable, for example:
 ~~~
