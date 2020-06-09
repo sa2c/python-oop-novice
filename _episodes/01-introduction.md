@@ -200,7 +200,7 @@ string_two = string_one
 ~~~
 {: .language-python}
 
-But, we can never change the value of the string object itself. The string "hello" will always be the string "hello". We can set the variable to a new object, with
+But, we can never change the value of the string object itself. The string "hello" will always be the string "hello". We can set the variable `string_two` to a new object, with
 ~~~
 string_two = string_one + ", world"
 ~~~
@@ -212,7 +212,7 @@ print(string_one)
 ~~~
 {: .language-python}
 
-This may not be surprising, but not all objects in Python behave this way.
+This may not seem surprising, but not all objects in Python behave this way.
 
 
 Consider the following list of strings:
