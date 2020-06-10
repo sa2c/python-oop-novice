@@ -1,4 +1,4 @@
-&ndash;-
+---
 title: "Duck typing and interfaces"
 teaching: 10
 exercises: 15
@@ -20,7 +20,7 @@ keypoints:
   the same kind of thing as the superclass."
 - "Implementing interfaces and adding functionality with composition
   can be better alternatives to inheritance in some cases."
-&ndash;-
+---
 
 There is a principle that if something "looks like a duck, and swims
 like a duck, and quacks like a duck, then it is probably a duck".
