@@ -90,7 +90,7 @@ InvalidTemperatureError` or with `except ValueError` (or even `except
 Exception`).
 
 What about if we want to add functionality? Let's consider an example
-of a `Shape` class, which can calculate its perimeter.
+of a `Polynomial` class, which can calculate its perimeter.
 
 ~~~
 class Polygon:

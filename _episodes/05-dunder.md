@@ -45,8 +45,8 @@ Python thinks that these are different triangles.
 
 So, despite these triangles having been constructed with exactly the
 same side lengths, Python distinguishes between them. By default,
-Python will only consider two objects to be the same if they refer to
-the same piece of memory. For example:
+Python will only consider two objects to be the same if they are
+_identical_:
 
 ~~~
 a_triangle = Triangle([3, 4, 5])
@@ -62,10 +62,6 @@ else:
 Python thinks that these triangles are the same.
 ~~~
 {: .output}
-
-This is because assignment in Python works by looking at the value
-(memory location) pointed to by the object on the right, and making
-the name on the left point to the same place.
 
 This isn't great for our triangle example&mdash;we would much prefer
 if we could compare equality of triangles without having to compare
