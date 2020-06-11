@@ -25,7 +25,7 @@ keypoints:
 There is a principle that if something "looks like a duck, and swims
 like a duck, and quacks like a duck, then it is probably a duck".
 
-{% include image.html url="/assets/img/duck.jpg"
+{% include image.html url="../assets/img/duck.jpg"
 alt="Photograph of a duck and three ducklings on a body of
 water" caption="These ducks are swimming and look like ducks, although
 the quacking can't be guaranteed from this image."%}
