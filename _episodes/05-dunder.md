@@ -292,6 +292,10 @@ class to be called like functions. For example, returning to the
 `FunctionPlotter` example:
 
 ~~~
+from numpy import linspace, sin
+from matplotlib.colors import is_color_like
+from matplotlib.pyplot import subplots
+
 class FunctionPlotter:
     def __init__(self, color='red', linewidth=1, x_min=-10, x_max=10):
         self.color = color
@@ -312,16 +316,15 @@ class FunctionPlotter:
         '''Plot a function of a single argument.
         The line is plotted in the colour specified by color, and with width
         linewidth.'''
-        fig, ax = matplotlib.pyplot.subplots()
-        x = numpy.linspace(self.x_min, self.x_max, 1000)
+        fig, ax = subplots()
+        x = linspace(self.x_min, self.x_max, 1000)
         ax.plot(x, function(x), color=self._color, linewidth=self.linewidth)
-        fig.show()
 
     def __call__(self, *args, **kwargs):
         return self.plot(*args, **kwargs)
 
 plotter = FunctionPlotter()
-plotter(numpy.sin)
+plotter(sin)
 ~~~
 {: .language-python}
 

@@ -328,6 +328,10 @@ increasingly complex and build up functionality in layers.
 >> ## Solution
 >>
 >> ~~~
+>> from numpy import linspace
+>> from matplotlib.pyplot import subplots
+>> from matplotlib.colors import is_color_like
+>>
 >> class PolynomialPlotter:
 >>     def __init__(self, color='red', linewidth=1, x_min=-10, x_max=10):
 >>         assert is_color_like(color)
@@ -349,11 +353,10 @@ increasingly complex and build up functionality in layers.
 >>         plot the polynomial f(x) = ax^n + bx^(n-1) + cx^(n-2) + ... .
 >>         The line is plotted in the colour specified by color, and with width
 >>         linewidth.'''
->>         fig, ax = matplotlib.pyplot.subplots()
->>         x = numpy.linspace(self.x_min, self.x_max, 1000)
+>>         fig, ax = subplots()
+>>         x = linspace(self.x_min, self.x_max, 1000)
 >>         ax.plot(x, self.polynomial(x, coefficients),
 >>                 color=self.color, linewidth=self.linewidth)
->>         fig.show()
 >>
 >> class QuadraticPlotter(PolynomialPlotter):
 >>     def plot(self, a, b, c):
@@ -383,10 +386,9 @@ increasingly complex and build up functionality in layers.
 >>         '''Plot a function of a single argument.
 >>         The line is plotted in the colour specified by color, and with width
 >>         linewidth.'''
->>         fig, ax = matplotlib.pyplot.subplots()
->>         x = numpy.linspace(self.x_min, self.x_max, 1000)
+>>         fig, ax = subplots()
+>>         x = linspace(self.x_min, self.x_max, 1000)
 >>         ax.plot(x, function(x), color=self.color, linewidth=self.linewidth)
->>         fig.show()
 >>
 >>
 >> class PolynomialPlotter(FunctionPlotter):

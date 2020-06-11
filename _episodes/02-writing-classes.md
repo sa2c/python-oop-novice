@@ -24,8 +24,8 @@ If we wanted to plot a variety of quadratic functions, with a
 consistent set of styles, we could define a class that does this:
 
 ~~~
-import matplotlib.pyplot
-import numpy
+from matplotlib.pyplot import subplots
+from numpy import linspace
 
 class QuadraticPlotter:
     color = 'red'
@@ -37,11 +37,10 @@ class QuadraticPlotter:
         The line is plotted in the colour specified by color, and with width
         linewidth.'''
 
-        fig, ax = matplotlib.pyplot.subplots()
-        x = numpy.linspace(-10, 10, 1000)
+        fig, ax = subplots()
+        x = linspace(-10, 10, 1000)
         ax.plot(x, a * x ** 2 + b * x + c,
                 color=self.color, linewidth=self.linewidth)
-        fig.show()
 ~~~
 {: .language-python}
 
@@ -165,11 +164,10 @@ Line width of blue plotter is 5
 >>        The line is plotted in the colour specified by color, and with width
 >>        linewidth.'''
 >>
->>        fig, ax = matplotlib.pyplot.subplots()
->>        x = numpy.linspace(self.x_min, self.x_max, 1000)
+>>        fig, ax = subplots()
+>>        x = linspace(self.x_min, self.x_max, 1000)
 >>        ax.plot(x, a * x ** 2 + b * x + c,
 >>                color=self.color, linewidth=self.linewidth)
->>        fig.show()
 >>
 >> narrow_plot = QuadraticPlotter()
 >> wide_plot = QuadraticPlotter()
@@ -192,8 +190,7 @@ Line width of blue plotter is 5
 >
 > ~~~
 > from scipy.odr import ODR, Model, RealData
-> from matplotlib.pyplot import subplots, show
-> from numpy import linspace
+> from matplotlib.pyplot import show
 >
 > def linear(params, x):
 >     return params[0] * x + params[1]
@@ -290,11 +287,10 @@ class QuadraticPlotter:
         The line is plotted in the colour specified by color, and with width
         linewidth.'''
 
-        fig, ax = matplotlib.pyplot.subplots()
-        x = numpy.linspace(-10, 10, 1000)
+        fig, ax = subplots()
+        x = linspace(-10, 10, 1000)
         ax.plot(x, a * x ** 2 + b * x + c,
                 color=self.color, linewidth=self.linewidth)
-        fig.show()
 
 pink_plotter = QuadraticPlotter(color='magenta', linewidth=3)
 pink_plotter.plot(0, 1, 0)
@@ -327,11 +323,10 @@ usable, rather than deferring these errors to a long way down the line.
 >>        The line is plotted in the colour specified by color, and with width
 >>        linewidth.'''
 >>
->>        fig, ax = matplotlib.pyplot.subplots()
->>        x = numpy.linspace(self.x_min, self.x_max, 1000)
+>>        fig, ax = subplots()
+>>        x = linspace(self.x_min, self.x_max, 1000)
 >>        ax.plot(x, a * x ** 2 + b * x + c,
 >>                color=self.color, linewidth=self.linewidth)
->>        fig.show()
 >>
 >> narrow_plot = QuadraticPlotter()
 >> wide_plot = QuadraticPlotter(x_min=-5, x_max=50)

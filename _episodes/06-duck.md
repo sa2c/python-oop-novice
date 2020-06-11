@@ -91,7 +91,7 @@ fractal.
 
 ~~~
 %matplotlib inline
-from numpy import linspace, newaxis, pi
+from numpy import angle, linspace, newaxis, pi
 from matplotlib.pyplot import colorbar, subplots
 
 def complex_linspace(lower, upper, num_real, num_imag):
@@ -113,14 +113,13 @@ initial_z = complex_linspace(z_min, z_max, 1000, 1000)
 results = newton(test_polynomial, test_derivative, initial_z, 20)
 
 fig, ax = subplots()
-image = ax.imshow(numpy.angle(results), vmin=-3, vmax=3,
+image = ax.imshow(angle(results), vmin=-3, vmax=3,
                   extent=(z_min.real, z_max.real, z_min.imag, z_max.imag))
 cbar = colorbar(image, ax=ax, ticks=(-2*pi/3, 0, 2*pi/3))
 cbar.set_label(r'$\arg(z_n)$')
 cbar.ax.set_yticklabels((r'$-\frac{2\pi}{3}$', '0', r'$\frac{2\pi}{3}$'))
 ax.set_xlabel(r'$\operatorname{Re}(z_0)$')
 ax.set_ylabel(r'$\operatorname{Im}(z_0)$')
-fig.show()
 ~~~
 {: .language-python}
 

@@ -517,6 +517,10 @@ Modified perimeter: 21
 >> ## Solution
 >>
 >> ~~~
+>> from numpy import linspace
+>> from matplotlib.pyplot import subplots
+>> from matplotlib.colors import is_color_like
+>>
 >> class FunctionPlotter:
 >>     def __init__(self, color='red', linewidth=1, x_min=-10, x_max=10):
 >>         self.color = color
@@ -537,10 +541,9 @@ Modified perimeter: 21
 >>         '''Plot a function of a single argument.
 >>         The line is plotted in the colour specified by color, and with width
 >>         linewidth.'''
->>         fig, ax = matplotlib.pyplot.subplots()
->>         x = numpy.linspace(self.x_min, self.x_max, 1000)
+>>         fig, ax = subplots()
+>>         x = linspace(self.x_min, self.x_max, 1000)
 >>         ax.plot(x, function(x), color=self._color, linewidth=self.linewidth)
->>         fig.show()
 >> ~~~
 >> {: .language-python}
 > {: .solution}
