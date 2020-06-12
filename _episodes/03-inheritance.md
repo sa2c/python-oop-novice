@@ -127,7 +127,7 @@ class Triangle(Polygon):
     def area(self):
         '''Returns the area of the triangle.'''
         a, b, c = self.side_lengths
-        p = (a + b + c) / 2
+        p = self.perimeter() / 2
         return (p * (p - a) * (p - b) * (p - c)) ** 0.5
 
 a_triangle = Triangle([3, 4, 5])
