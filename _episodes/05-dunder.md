@@ -371,6 +371,13 @@ plotter(sin)
 > Do we need to redefine `__call__` on each subclass of
 > `FunctionPlotter` to get the correct version of the `plot()`
 > function? Why/why not?
+>
+>> ## Solution
+>>
+>> No; `self` returns the current instance, so the call to
+>> `self.plot()` will pick up the correct version of `plot()` for
+>> whichever class the instance is.
+> {: .solution}
 {: .challenge}
 
 
