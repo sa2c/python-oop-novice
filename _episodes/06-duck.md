@@ -242,6 +242,17 @@ for number in FibonacciIterator(100):
 > Look back at the solutions for the `QuadraticPlotter`,
 > `PolynomialPlotter`, and `FunctionPlotter`. What problems do you see
 > with the `plot` method of these classes?
+>
+>> ## Solution
+>>
+>> The arguments to `FunctionPlotter.plot()`, `PolynomialPlotter.plot()`,
+>> and `QuadraticPlotter.plot()` are all different&mdash;one expects a
+>> callable, one expects a list of coefficients as one argument, and
+>> one expects three coefficients as separate arguments. In general,
+>> specialistations of a class should keep the same interface to its
+>> functions, and the parent class should be interchangeable with its
+>> specialisations.
+> {: .solution}
 {: .challenge}
 
 > ## Over to you
@@ -314,6 +325,29 @@ inherit it.)
 > The hashable protocol allows classes to be used as dictionary keys
 > and as members of sets. Look up [the hashable protocol][hashable]
 > and adjust the `Polygon` class so that it follows this.
+>
+> Test this by using a `Triangle` instance as a dict key:
+>
+> ~~~
+> triangle_descriptions = {
+>     Triangle([3, 4, 5]): "The basic Pythagorean triangle"
+> }
+> ~~~
+> {: .language-python}
+>
+>> ## Solution
+>>
+>> The hashable protocol requires implementing one method,
+>> `__hash__()`, which should return a hash of the aspects of the
+>> instance that make it unique. Lists can't be hashed, so we also
+>> need to turn the list of `side_lengths` into a tuple.
+>>
+>> ~~~
+>>     def __hash__(self):
+>>         return hash(tuple(self.side_lengths))
+>> ~~~
+>> {: .language-python}
+> {: .solution}
 {: .challenge}
 
 
@@ -383,6 +417,78 @@ make it more complicated to get a view of the big picture.
 > How could the `FunctionPlotter`, `PolynomialPlotter`, and
 > `QuadraticPlotter` be refactored to make use of composition instead
 > of inheritance?
+>
+>> ## Solution
+>>
+>> One way of doing this is to define a "plottable function"
+>> interface. An object respecting this interface would:
+>>
+>> * be callable
+>> * accept one argument
+>> * return \\(f(x)\\)
+>>
+>> Then, with the `FunctionPlotter` as defined previously, there is no
+>> need to subclass to create `QuadraticPlotter`s and
+>> `PolynomialPlotter`s; instead, we can define a `QuadraticFunction`
+>> class as:
+>>
+>> ~~~
+>> class Quadratic:
+>>     def __init__(self, a, b, c):
+>>         self.a = a
+>>         self.b = b
+>>         self.c = c
+>>
+>>     def __call__(self, x):
+>>         return self.a * x ** 2 + self.b * x + self.c
+>> ~~~
+>> {: .language-python}
+>>
+>> This can then be passed to a `FunctionPlotter`:
+>>
+>> ~~~
+>> plotter = FunctionPlotter()
+>> plotter.plot(Quadratic(1, -1, 1))
+>> ~~~
+>> {: .language-python}
+>>
+>> Alternatively, we can _encapsulate_ the function to be plotted as
+>> part of the class.
+>>
+>> ~~~
+>> from matplotlib.colors import is_color_like
+>>
+>> class FunctionPlotter:
+>>     def __init__(self, function, color='red', linewidth=1, x_min=-10, x_max=10):
+>>         assert is_color_like(color)
+>>         self.color = color
+>>         self.linewidth = linewidth
+>>         self.x_min = x_min
+>>         self.x_max = x_max
+>>         self.function = function
+>>
+>>     def plot(self):
+>>         '''Plot a function of a single argument.
+>>         The line is plotted in the colour specified by color, and with width
+>>         linewidth.'''
+>>         fig, ax = subplots()
+>>         x = linspace(self.x_min, self.x_max, 1000)
+>>         ax.plot(x, self.function(x), color=self.color, linewidth=self.linewidth)
+>>         fig.show()
+>> ~~~
+>> {: .language-python}
+>>
+>> This could then be used as:
+>>
+>> ~~~
+>> from numpy import sin
+>> sin_plotter = FunctionPlotter(sin)
+>> quadratic_plotter = FunctionPlotter(Quadratic(1, -1, 1), color='blue')
+>> sin_plotter.plot()
+>> quadratic_plotter.plot()
+>> ~~~
+>> {: .language-python}
+> {: .solution}
 {: .challenge}
 
 [hashable]: https://docs.python.org/library/collections.abc.html#collections.abc.Hashable

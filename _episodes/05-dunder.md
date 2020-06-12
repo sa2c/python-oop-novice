@@ -233,6 +233,44 @@ class Triangle(Polygon):
 > Add a class method that generates a triangle with three random edge
 > lengths (for example, using `random.random()`. Use this to construct
 > and sort a list of 10 random triangles.
+>
+>> ## Solution
+>>
+>> Add an import at the top of the file:
+>>
+>> ~~~
+>> from random import random
+>> ~~~
+>> {: .language-python}
+>>
+>> Also add new class method:
+>>
+>> ~~~
+>>     @classmethod
+>>     def random(cls):
+>>         '''Returns a triangle with three random length sides in the
+>>         range [0, 1).
+>>         If the sum of the two short sides isn't longer than the
+>>         long side (and so the triangle doesn't close), then try
+>>         again. There is an infinitesimal probability that this
+>>         method will never return, as randomness keeps delivering
+>>         invalid triangles.'''
+>>
+>>         random_triangle = cls([random(), random(), random()])
+>>         while isinstance(random_triangle.area(), complex):
+>>             random_triangle = cls([random(), random(), random()])
+>>         return random_triangle
+>> ~~~
+>> {: .language-python}
+>>
+>> Testing this:
+>>
+>> ~~~
+>> random_triangles = [Triangle.random() for _ in range(10)]
+>> [triangle.area() for triangle in sorted(random_triangles)]
+>> ~~~
+>> {: .language-python}
+> {: .solution}
 {: .challenge}
 
 > ## Arithmetic

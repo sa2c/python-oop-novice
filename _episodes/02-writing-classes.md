@@ -252,6 +252,84 @@ Line width of blue plotter is 5
 > variables attached to the object, and functions into methods. Some
 > of these you won't be able to set in the class definition, but will
 > need to be set before the functions will work.
+>
+>> ## Solution
+>>
+>> ~~~
+>> class FitterPlotter:
+>>     x_data = None
+>>     y_data = None
+>>     x_err = None
+>>     y_err = None
+>>
+>>     fit_result = None
+>>     fit_form = None
+>>     num_fit_params = None
+>>
+>>     xmin = None
+>>     xmax = None
+>>
+>>     def odr_fit(self, p0=None):
+>>         if None in (self.x_data, self.y_data, self.fit_form):
+>>             raise ValueError("x_data, y_data, and fit_form must be specified")
+>>         if not p0 and not self.num_fit_params:
+>>             raise ValueError("p0 or num_fit_params must be specified")
+>>         if p0 and (self.num_fit_params is not None):
+>>             assert len(p0) == self.num_fit_params
+>>
+>>         data_to_fit = RealData(self.x_data, self.y_data, self.x_err, self.y_err)
+>>         model_to_fit_with = Model(self.fit_form)
+>>         if not p0:
+>>             p0 = tuple(1 for _ in range(self.num_fit_params))
+>>
+>>         odr_analysis = ODR(data_to_fit, model_to_fit_with, p0)
+>>         odr_analysis.set_job(fit_type=0)
+>>         self.fit_result = odr_analysis.run()
+>>         return self.fit_result
+>>
+>>     def plot_results(self, filename=None):
+>>         if None in (self.x_data, self.y_data):
+>>             raise ValueError("x_data and y_data must be specified")
+>>         fig, ax = subplots()
+>>         xmin, xmax = self.xmin, self.xmax
+>>         if xmin is None:
+>>             xmin = min(self.x_data)
+>>         if xmax is None:
+>>             xmax = max(self.x_data)
+>>
+>>         if self.fit_result is not None:
+>>             x_range = linspace(xmin, xmax, 1000)
+>>             ax.plot(x_range, self.fit_form(self.fit_result.beta, x_range),
+>>                     label='Fit')
+>>             fig.suptitle(f'Data: $A={self.fit_result.beta[0]:.02}'
+>>                          f'\\pm{self.fit_result.cov_beta[0][0]**0.5:.02}, '
+>>                          f'B={self.fit_result.beta[1]:.02}'
+>>                          f'\\pm{self.fit_result.cov_beta[1][1]**0.5:.02}$')
+>>
+>>         ax.errorbar(self.x_data, self.y_data, xerr=self.x_err, yerr=self.y_err,
+>>                     fmt='.', label='Data')
+>>         ax.set_xlabel(r'$x$')
+>>         ax.set_ylabel(r'$y$')
+>>         ax.legend(loc=0, frameon=False)
+>>
+>>         if filename is not None:
+>>             fig.savefig(filename)
+>>
+>>
+>> fitterplotter = FitterPlotter()
+>> fitterplotter.x_data = [0, 1, 2, 3, 4, 5]
+>> fitterplotter.y_data = [1, 3, 2, 4, 5, 5]
+>> fitterplotter.x_err = [0.2, 0.1, 0.3, 0.2, 0.5, 0.3]
+>> fitterplotter.y_err = [0.4, 0.4, 0.1, 0.2, 0.1, 0.4]
+>> fitterplotter.fit_form = linear
+>> fitterplotter.num_fit_params = 2
+>>
+>> fitterplotter.odr_fit()
+>> fitterplotter.plot_results()
+>> show()
+>> ~~~
+>> {: .language-python}
+> {: .solution}
 {: .challenge}
 
 
@@ -343,6 +421,84 @@ usable, rather than deferring these errors to a long way down the line.
 > Adjust your solution to the _Plots of fits_ challenge above so that
 > it has an initialiser which checks that the needed parameters are
 > given before initialising the object.
+>
+>> ## Solution
+>>
+>> ~~~
+>> class FitterPlotter:
+>>     fit_result = None
+>>
+>>     def __init__(self, x_data, y_data, x_err=None, y_err=None,
+>>                  fit_form=None, num_fit_params=None, xmin=None, xmax=None):
+>>         self.x_data = x_data
+>>         self.y_data = y_data
+>>         self.x_err = x_err
+>>         self.y_err = y_err
+>>         self.fit_form = fit_form
+>>         self.num_fit_params = num_fit_params
+>>         self.xmin = xmin
+>>         self.xmax = xmax
+>>
+>>     def odr_fit(self, p0=None):
+>>         if self.fit_form is None:
+>>             raise ValueError("fit_form must be specified")
+>>         if not p0 and not self.num_fit_params:
+>>             raise ValueError("p0 or num_fit_params must be specified")
+>>         if p0 and (self.num_fit_params is not None):
+>>             assert len(p0) == self.num_fit_params
+>>
+>>         data_to_fit = RealData(self.x_data, self.y_data, self.x_err, self.y_err)
+>>         model_to_fit_with = Model(self.fit_form)
+>>         if not p0:
+>>             p0 = tuple(1 for _ in range(self.num_fit_params))
+>>
+>>         odr_analysis = ODR(data_to_fit, model_to_fit_with, p0)
+>>         odr_analysis.set_job(fit_type=0)
+>>         self.fit_result = odr_analysis.run()
+>>         return self.fit_result
+>>
+>>     def plot_results(self, filename=None):
+>>         fig, ax = subplots()
+>>         xmin, xmax = self.xmin, self.xmax
+>>         if xmin is None:
+>>             xmin = min(self.x_data)
+>>         if xmax is None:
+>>             xmax = max(self.x_data)
+>>
+>>         if self.fit_result is not None:
+>>             x_range = linspace(xmin, xmax, 1000)
+>>             ax.plot(x_range, self.fit_form(self.fit_result.beta, x_range),
+>>                     label='Fit')
+>>             fig.suptitle(f'Data: $A={self.fit_result.beta[0]:.02}'
+>>                          f'\\pm{self.fit_result.cov_beta[0][0]**0.5:.02}, '
+>>                          f'B={self.fit_result.beta[1]:.02}'
+>>                          f'\\pm{self.fit_result.cov_beta[1][1]**0.5:.02}$')
+>>
+>>         ax.errorbar(self.x_data, self.y_data, xerr=self.x_err, yerr=self.y_err,
+>>                     fmt='.', label='Data')
+>>         ax.set_xlabel(r'$x$')
+>>         ax.set_ylabel(r'$y$')
+>>         ax.legend(loc=0, frameon=False)
+>>
+>>         if filename is not None:
+>>             fig.savefig(filename)
+>>
+>>
+>> fitterplotter = FitterPlotter(
+>>     x_data=[0, 1, 2, 3, 4, 5],
+>>     y_data=[1, 3, 2, 4, 5, 5],
+>>     x_err=[0.2, 0.1, 0.3, 0.2, 0.5, 0.3],
+>>     y_err=[0.4, 0.4, 0.1, 0.2, 0.1, 0.4],
+>>     fit_form=linear,
+>>     num_fit_params=2
+>> )
+>>
+>> fitterplotter.odr_fit()
+>> fitterplotter.plot_results()
+>> show()
+>> ~~~
+>> {: .language-python}
+> {: .solution}
 {: .challenge}
 
 {% include links.md %}
