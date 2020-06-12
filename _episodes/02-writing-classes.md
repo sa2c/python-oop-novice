@@ -49,16 +49,6 @@ used to define a new class. Both functions and variables can be created inside
 the class block, and these will be accessible on any objects of the class that are
 created.
 
-> ## Examples
->
-> Note that the example is a simple illustration of building a class, but if the use case is as simple as the one above,
-> a simpler choice might be a function like:
-> ~~~
-> plot(a, b, c, color='red', linewidth=1)
-> ~~~
-> {: .language-python}
-{: .callout}
-
 When functions are defined within a class, they will become methods of instances
 of the class. In order for the function to be aware of the object that they need
 to refer to, methods are always given the instance as their first argument. By
@@ -100,8 +90,22 @@ Notice that we only supply the arguments `a`, `b`, and `c` to `plotter.plot()`â€
 Python automatically adds the object to become the `self` parameter.
 
 So far, this hasn't done anything that we couldn't have done with a function
-to perform the setup and then do the plot. However, what if we wanted to plot
-some of the curves in a thick blue line?
+to perform the setup and then do the plot&mdash;perhaps something like:
+
+~~~
+def quadratic_plot(a, b, c, color='red', linewidth=1):
+    '''Plot the line a * x ** 2 + b * x + c and output to the screen.
+    x runs between -10 and 10, with 1000 intermediary points.
+    The line is plotted in the colour specified by color, and with width
+    linewidth.'''
+
+    fig, ax = subplots()
+    x = linspace(-10, 10, 1000)
+    ax.plot(x, a * x ** 2 + b * x + c, color=color, linewidth=linewidth)
+~~~
+{: .language-python}
+
+However, what if we wanted to plot some of the curves in a thick blue line?
 
 ~~~
 blue_plotter = QuadraticPlotter()
@@ -118,7 +122,9 @@ blue_plotter.plot(-2, 13, 4)
 The two objects `plotter` and `blue_plotter` can store the different states
 needed to set up the two styles of plot, whilst keeping the plotting
 functionlity common, so it doesn't need to be written separately for red and
-blue versions.
+blue versions. We no longer have to specify the colour every time we
+want to plot with a non-default colour&mdash;instead, we can use the
+`QuadraticPlotter` instance that has the colour we want set.
 
 If we need to, we can check the values of the variables we defined:
 
