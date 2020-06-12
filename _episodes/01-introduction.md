@@ -176,64 +176,73 @@ We can see here that `numbers` is an object of the type `numpy.ndarray`. In Pyth
 > {: .solution}
 {: .challenge}
 
-## Ch-Ch-Changes
+
+## Changing things
 
 In Python, there are two ways in which objects can behave. The most intuitive case is when object are created with a value, and they keep the value forever. Many objects we're familiar with, such as integers or strings, are objects which hold a value.
 
 Let's store a string in a variable:
 ~~~
-string_one = "hello"
+message = "Hello"
 ~~~
 {: .language-python}
 
-The variable `string_one` now refers to an object, which has the value `"hello"`. We can point another variable at the same object with:
+The variable `message` now refers to an object, which has the value
+`"Hello"`. We can point another variable at the same object with:
 ~~~
-string_two = string_one
+second_message = message
 ~~~
 {: .language-python}
 
-But, we can never change the value of the string object itself. The string "hello" will always be the string "hello". We can set the variable `string_two` to a new object, with
+But, we can never change the value of the string object itself. The
+string "hello" will always be the string "hello". We can set the
+variable `second_message` to a new object, with
 ~~~
-string_two = string_one + ", world"
+second_message = message + ", world"
 ~~~
 {: .language-python}
 
 But the original object is still there, unchanged. We can still get to it by typing
 ~~~
-print(string_one)
+print(message)
 ~~~
 {: .language-python}
 
 This may not seem surprising, but not all objects in Python behave this way. Consider the following list of strings:
 ~~~
-maybe = ["We", "probably", "can't", "change", "this"]
+messages = ["Hello", "world!"]
 ~~~
 {: .language-python}
 
-Let's point new variable `same_maybe` at the list
+Let's point new variable `duplicate_messages` at the list named `messages`
 ~~~
-same_maybe = maybe
-~~~
-{: .language-python}
-
-Think of this as pointing `same_maybe` at the _same underlying object_ contained in `maybe`: Now let's change a part of `same_maybe`:
-~~~
-same_maybe[2] = "can"
+duplicate_messages = list
 ~~~
 {: .language-python}
 
-What is the value of `maybe` now?
+Think of this as pointing `duplicate_messages` at the _same underlying
+object_ contained in `messages`: Now let's change a part of
+`duplicate_messages`:
 ~~~
-print(maybe)
+duplicate_messages[1] = "there!"
+~~~
+{: .language-python}
+
+What is the value of `messages` now?
+~~~
+print(messages)
 ~~~
 {: .language-python}
 
 ~~~
-['We', 'probably', 'can', 'change', 'this']
+['Hello', 'there!']
 ~~~
 {: .output}
 
-Note how we changed `maybe` through the variable `same_maybe`. We can do this because both `maybe` and `same_maybe` refer to the same underlying object, and that underlying object can be changed.
+Note how we changed `messages` through the variable
+`duplicate_messages`. We can do this because both `messages` and
+`duplicate_messages` refer to the same underlying object, and that
+underlying object can be changed.
 
 We say that objects which can't be changed, like numbers and string, are _immutable_. Numbers are an intuitive example of immutable objects, the number 1000 will always be the number 1000. We say that these objects that can be changed are _mutable_, they can be "mutated" after they've created.
 
@@ -244,21 +253,21 @@ We say that objects which can't be changed, like numbers and string, are _immuta
 > Check if you can change a tuple by setting:
 >
 > ~~~
-> maybe = ("Maybe", "we", "can't", "change", "this?")
+> messages = ("Hello", "world!")
 > ~~~
 > {: .language-python}
 >
-> and trying to modify the 3rd element with:
+> and trying to modify the second element with:
 > ~~~
-> maybe[2] = "can"
+> messages[1] = "there!'
 > ~~~
 > {: .language-python}
 >
 >> ## Solution
 >>
 >> ~~~
->> maybe = ("Maybe", "we", "can't", "change", "this?")
->> maybe[2] = "can"
+>> messages = ("Hello", "world!")
+>> messages[1] = "there!"
 >> ~~~
 >> {: .language-python}
 >>
@@ -314,19 +323,24 @@ It's worth noting that both mutable and immutable objects can have methods. Meth
 the underlying object. If needed, they will return a brand new object, and set the expected value in the new object. To keep this change,
 you will need to store it in a variable, for example:
 ~~~
-hello = "hello, world"
-hello = hello.capitalize()
-print(hello)
+message = "hello, world"
+message = hello.capitalize()
+print(message)
 ~~~
 {: .language-python}
 
 Methods of mutable object can, and often do, change the class.
 ~~~
-a = [1,2,3]
-a.append(4)
-print(a)
+grades = [84, 78, 91]
+grades.append(66)
+print(grades)
 ~~~
 {: .language-python}
+
+~~~
+[84, 78, 91, 66]
+~~~
+{: .output}
 
 In this case, we don't need the extra `=` to assign the value to a new object.
 
