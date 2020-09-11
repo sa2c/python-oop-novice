@@ -384,6 +384,15 @@ pink_plotter.plot(0, 1, 0)
 This also lets us do some validation that the values we are given are
 usable, rather than deferring these errors to a long way down the line.
 
+> ## Pronouncing `__init__`
+>
+> The method name `__init__` is most often pronounced "dunder init",
+> where the "dunder" is short for "double underscore", since the name
+> starts and ends with two underscores.
+>
+> We'll encounter more methods with "dunder" in the name in a later episode.
+{: .callout}
+
 > ## Zoom in again
 >
 > Try rewriting the "Zoom in" example above to set the bounds of the plot,

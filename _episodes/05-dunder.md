@@ -1,5 +1,5 @@
 ---
-title: "Magic methods"
+title: "Special methods"
 teaching: 25
 exercises: 15
 questions:
@@ -118,8 +118,8 @@ Python thinks that these triangles are the same.
 {: .output}
 
 Great! We can compare equality. `__eq__` is the second example we've
-seen of a so-called "magic method" or "dunder method" (short for
-"double underscore"). These are methods that Python ascribes a special
+seen of a so-called "special", "magic", or "dunder" (short for "double
+underscore") method. These are methods that Python ascribes a special
 meaning to; it guards the names of these with a double underscore `__`
 on each side, so it is unlikely to collide with a name you might want
 to use for a method of your own. These methods allow us to enable
