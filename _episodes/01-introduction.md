@@ -519,6 +519,8 @@ This is because `ValueError` is a subclass of `Exception`: value errors are a
 specific type of exception that can occur, and so should have all the same
 logic that is common to all exceptions.
 
+![Tree of Python exception classes](../fig/exception-hierarchy.svg)
+
 One place this can be used is to structure exception handling; for example:
 
 ~~~
