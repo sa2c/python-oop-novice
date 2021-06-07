@@ -418,7 +418,7 @@ increasingly complex and build up functionality in layers.
 >> {: .language-python}
 >>
 >> Defining a function within another function as we do in
->> `PolynomialPlotter` is called a _closure_; this is a way of
+>> `PolynomialPlotter` is a useful way of
 >> parametrising functions without having to pass arguments every time.
 > {: .solution}
 {: .challenge}
