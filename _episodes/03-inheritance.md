@@ -217,8 +217,20 @@ increasingly complex and build up functionality in layers.
 > ## `super()` placement
 >
 > A four-sided shape where one of the side lengths is zero is a
-> triangle. Adjust the `__init__` method of the `Polygon` to remove
-> any zero-length sides before storing the list of side lengths.
+> triangle. We can adjust the `__init__` method of the `Polygon`
+> to reflect this by removing any zero-length sides before storing
+> the list of side lengths. The method then becomes:
+>
+> ~~~
+> def __init__(self, side_lengths):
+>     filtered_side_lengths = []
+>     for side_length in side_lengths:
+>         assert side_length >= 0
+>         if side_length > 0:
+>             filtered_side_lengths.append(side_length)
+>     self.side_lengths = filtered_side_lengths
+> ~~~
+> {: .language-python}
 >
 > How does this affect our implementation of `Triangle.__init__`?
 > Adjust this so that `Triangle([3, 4, 0, 5])` works, and
