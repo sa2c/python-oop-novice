@@ -106,6 +106,32 @@ def quadratic_plot(a, b, c, color='red', linewidth=1):
 {: .language-python}
 
 However, what if we wanted to plot some of the curves in a thick blue line?
+With this function, we could set the `color` and `linewidth` on every call,
+but that would create a lot of repetition, and hence opportunities for
+the code to become inconsistent.
+
+We could also use a `dict` to hold the common options:
+
+~~~
+thick_blue = {'color': 'blue', 'linewidth': 5}
+
+quadratic_plot(3, -5, 5)
+quadratic_plot(-3, 1, 0, **thick_blue)
+quadratic_plot(2, 10, 2)
+quadratic_plot(-2, 13, 4, **thick_blue)
+~~~
+{: .language-python}
+
+> `**`
+>
+> The `**` syntax here tells Python to take the `thick_blue` `dict`, and
+> use its keys and values as keywords and keyword arguments. We'll
+> look at this operator later in the lesson where we talk about
+> decorators.
+{: .callout}
+
+Using objects on the other hand gives a neat alternative way of achieving
+this result:
 
 ~~~
 blue_plotter = QuadraticPlotter()
