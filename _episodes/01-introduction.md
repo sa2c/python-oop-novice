@@ -323,9 +323,9 @@ It's worth noting that both mutable and immutable objects can have methods. Meth
 the underlying object. If needed, they will return a brand new object, and set the expected value in the new object. To keep this change,
 you will need to store it in a variable, for example:
 ~~~
-message = "hello, world"
-message = hello.capitalize()
-print(message)
+hello = "hello, world"
+capital_hello = hello.capitalize()
+print(capital_hello)
 ~~~
 {: .language-python}
 
