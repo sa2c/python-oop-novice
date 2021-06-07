@@ -288,7 +288,7 @@ side lengths from this, returning a `Triangle` with three equal sides.
 > ## Squares
 >
 > Add a class method to the `Rectangle` class which you wrote in the
-> previous challenge to create a square, given the length of its side.
+> previous episode to create a square, given the length of its side.
 >
 >> ## Solution
 >>
