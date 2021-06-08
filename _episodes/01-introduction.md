@@ -329,7 +329,7 @@ print(capital_hello)
 ~~~
 {: .language-python}
 
-Methods of mutable object can, and often do, change the class.
+Methods of mutable objects can, and often do, change the class.
 ~~~
 grades = [84, 78, 91]
 grades.append(66)
