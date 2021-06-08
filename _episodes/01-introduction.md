@@ -278,7 +278,6 @@ We say that objects which can't be changed, like numbers and string, are _immuta
 >> {: .output}
 >>
 >> This is telling you that you can't modify the tuple object, this is true because the tuple object is immutable.
->> {: .output}
 > {: .solution}
 {: .challenge}
 
