@@ -122,7 +122,7 @@ quadratic_plot(-2, 13, 4, **thick_blue)
 ~~~
 {: .language-python}
 
-> `**`
+> ## `**`
 >
 > The `**` syntax here tells Python to take the `thick_blue` `dict`, and
 > use its keys and values as keywords and keyword arguments. We'll
