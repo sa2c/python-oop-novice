@@ -216,7 +216,7 @@ messages = ["Hello", "world!"]
 
 Let's point new variable `duplicate_messages` at the list named `messages`
 ~~~
-duplicate_messages = list
+duplicate_messages = messages
 ~~~
 {: .language-python}
 
